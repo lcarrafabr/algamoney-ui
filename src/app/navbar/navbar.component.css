@@ -6,3 +6,39 @@
 .navbar-toggle {
   color: #ffffff;
 }
+
+.navlbar-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 210px;
+  margin: 0;
+  z-index: 9998;
+  background-color: #3A3633;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-usuario {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #525151;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: small;
+}
+
+.navbar-menuitem{
+  padding: 15px;
+}
+
+.navbar-menuitem a {
+  color: #C0BBB7;
+  text-decoration: none;
+}
+
+.navbar-menuitem a:hover{
+  color: #ffffff;
+}
