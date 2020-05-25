@@ -10,17 +10,18 @@
         <p-selectButton [options]="tipos" #tipo></p-selectButton>
       </div>
 
-      <div class="ui-g-6 ui-md-3 ui-fluid">
+      <div class="ui-g-6 ui-md-3 ui-sm-8 ui-fluid">
         <label>Vencimento</label>
         <p-calendar name="vencimento" dateFormat="dd/mm/yy"
         [readonlyInput]="true"
         [showIcon]="true"
         ngModel #vencimento="ngModel" required></p-calendar>
-
+        <!--
         <app-message [control]="vencimento" error="required" text="Informe um vencimento."></app-message>
+        -->
       </div>
 
-      <div class="ui-g-6 ui-md-3 ui-fluid">
+      <div class="ui-g-6 ui-md-3 ui-sm-8 ui-fluid">
         <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
         <p-calendar dateFormat="dd/mm/yy"
         [readonlyInput]="true"
@@ -29,12 +30,12 @@
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao"
+        <input pInputText type="text" autocomplete="disabled" name="descricao"
         ngModel #descricao="ngModel" required minlength="5">
-
+        <!--
         <app-message [control]="descricao" error="required" text="Informe uma descrição."></app-message>
         <app-message [control]="descricao" error="required" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
-
+          -->
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
@@ -60,8 +61,8 @@
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid" ></button>
-        <button pButton type="button" label="Novo" class="ui-button-secondary ui-button-raised"></button>
+        <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid" ></button>
+        <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" class="ui-button-secondary ui-button-raised"></button>
         <a href="javascript:;">Voltar para a pesquisa</a>
       </div>
 

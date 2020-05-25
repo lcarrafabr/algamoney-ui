@@ -29,6 +29,8 @@ export class LancamentosPesquisaComponent {
     { tipo: 'RECEITA', descricao: 'Salário', dataVencimento: new Date(2020, 1, 30),
     dataPagamento: null, valor: 5700, pessoa: 'Luciano Carrafa' },
     { tipo: 'DESPESA', descricao: 'CupLover', dataVencimento: new Date(2020, 1, 5),
-    dataPagamento: new Date(2020, 1, 10), valor: 7000, pessoa: 'Débora da Costa dos Santos Carrafa Benfica' }
+    dataPagamento: new Date(2020, 1, 10), valor: 7000, pessoa: 'Débora da Costa dos Santos Carrafa Benfica' },
+    { tipo: 'DESPESA', descricao: '23 caixas Amarelas', dataVencimento: new Date(2020, 4, 29),
+    dataPagamento: new Date(2020, 4, 25), valor: 10000, pessoa: 'Débora da Costa dos Santos Carrafa Benfica' }
   ];
 }
