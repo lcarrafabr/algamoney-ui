@@ -18,21 +18,16 @@ import { NgxCurrencyModule } from "ngx-currency";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
-import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { MessageComponent } from './message/message.component';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { PessoasModule } from './pessoas/pessoas.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PessoasPesquisaComponent,
-    PessoaCadastroComponent,
-    MessageComponent,
-    PessoasGridComponent
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +35,7 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
     FormsModule,
 
     LancamentosModule,
+    PessoasModule,
 
     InputTextModule,
     ButtonModule,
