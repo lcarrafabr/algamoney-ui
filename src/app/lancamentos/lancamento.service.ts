@@ -12,8 +12,7 @@ export class LancamentoService {
 
   pesquisar(): Promise<any> {
 
-    const headers = new HttpHeaders();
-    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, { headers })
     .toPromise()
