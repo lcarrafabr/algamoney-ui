@@ -42,7 +42,12 @@
     <div class="ui-g-12">
 
       <!--<app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>-->
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
+      <p-table [value]="lancamentos"
+      [paginator]="true"
+      [rows]="filtro.itensPorPagina"
+      [lazy]="true" [totalRecords]="totalRegistros"
+      (onLazyLoad)="aoMudarPagina($event)"
+      [responsive]="true">
         <ng-template pTemplate="emptymessage">
           Nenhum lançamento encontrado
         </ng-template>
