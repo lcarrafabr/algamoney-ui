@@ -9,7 +9,7 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" pTooltip="Informe a descrição" name="descricao"[(ngModel)]="descricao">
+        <input pInputText type="text" pTooltip="Informe a descrição" name="descricao"[(ngModel)]="filtro.descricao">
       </div>
 
       <div class="ui-g-12">
@@ -18,7 +18,7 @@
         [showIcon]="true"
         [inputStyle]="{width: '95px'}"
         name="vencimentoInicio"
-        [(ngModel)]="dataVencimentoInicio"
+        [(ngModel)]="filtro.dataVencimentoInicio"
       ></p-calendar>
 
         <label>Até</label>
@@ -27,7 +27,7 @@
         [showIcon]="true"
         [inputStyle]="{width: '95px'}"
         name="vencimentoFim"
-        [(ngModel)]="dataVencimentoFim"
+        [(ngModel)]="filtro.dataVencimentoFim"
       ></p-calendar>
 
       </div>
@@ -42,7 +42,7 @@
     <div class="ui-g-12">
 
       <!--<app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>-->
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="4" [responsive]="true">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
         <ng-template pTemplate="emptymessage">
           Nenhum lançamento encontrado
         </ng-template>
