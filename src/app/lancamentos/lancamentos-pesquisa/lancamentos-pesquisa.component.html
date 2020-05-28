@@ -1,33 +1,80 @@
 <div class="container">
   <div class="ui-g">
 
-    <div class="ui-g-12">
-      <h1>Lançamentos</h1>
-    </div>
+    <form autocomplete="off" (ngSubmit)="pesquisar();">
 
-    <div class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input pInputText type="text" placeholder="Descrição" pTooltip="Informe a descrição">
-    </div>
+      <div class="ui-g-12">
+        <h1>Lançamentos</h1>
+      </div>
 
-    <div class="ui-g-12">
-      <label style="display: block;">Vencimento</label>
-      <input pInputText type="text" style="width: 95px;">
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" pTooltip="Informe a descrição" name="descricao"[(ngModel)]="descricao">
+      </div>
 
-      <label>Até</label>
-      <input pInputText type="text" style="width: 95px;">
-    </div>
+      <div class="ui-g-12">
+        <label style="display: block;">Vencimento</label>
+        <input pInputText type="text" style="width: 95px;">
 
-    <div class="ui-g-12">
-      <button icon="pi pi-search" iconPos="left" class="ui-button-rounded" pButton type="submit" label="Pesquisar"></button>
-    </div>
+        <label>Até</label>
+        <input pInputText type="text" style="width: 95px;">
+      </div>
 
+      <div class="ui-g-12">
+        <button icon="pi pi-search" iconPos="left" class="ui-button-rounded" pButton type="submit" label="Pesquisar"></button>
+      </div>
+    </form>
   </div>
 
   <div class="ui-g">
     <div class="ui-g-12">
 
-      <app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>
+      <!--<app-lancamentos-grid [lancamentos]="lancamentos"></app-lancamentos-grid>-->
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="4" [responsive]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Pessoa</th>
+                <th>Descrição</th>
+                <th class="col-data-header">Vencimento</th>
+                <th class="col-data-header">Pagamento</th>
+                <th class="col-valor-header">Valor</th>
+                <th class="col-data-header"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-lancamento>
+            <tr>
+                <td>
+                  <span class="ui-column-title">Pessoa</span>
+                  {{lancamento.pessoa}}
+                </td>
+
+                <td>
+                  <span class="ui-column-title">Descrição</span>
+                  {{lancamento.descricao}}
+                </td>
+
+                <td class="col-data-content">
+                  <span class="ui-column-title">Vencimento</span>
+                  {{lancamento.dataVencimento | date: 'dd/MM/y'}}
+                </td>
+
+                <td class="col-data-content">
+                  <span class="ui-column-title">Pagamento</span>
+                  {{lancamento.dataPagamento | date: 'dd/MM/y'}}
+                </td>
+
+                <td class="col-valor-content">
+                  <span class="ui-column-title">Valor</span>
+                  <span [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
+                    {{lancamento.valor | currency: 'BRL'}}</span>
+                </td>
+                <td class="col-acoes">
+                  <a pButton icon="pi pi-pencil" style="margin-right: 5px;" pTooltip="Editar registro"></a>
+                  <button pButton icon="pi pi-trash" pTooltip="Remover registro"></button>
+              </td>
+            </tr>
+        </ng-template>
+      </p-table>
 
     </div>
 

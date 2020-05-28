@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from './../shared/shared.module';
@@ -22,8 +21,7 @@ import { InputTextModule } from 'primeng/inputtext';
 @NgModule({
   declarations: [
     LancamentoCadastroComponent,
-    LancamentosPesquisaComponent,
-    LancamentosGridComponent
+    LancamentosPesquisaComponent
   ],
   imports: [
     CommonModule,
