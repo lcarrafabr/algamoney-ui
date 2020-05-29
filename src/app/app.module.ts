@@ -1,3 +1,4 @@
+import { PessoaService } from './pessoas/pessoas-pesquisa/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     PessoasModule,
     CoreModule
   ],
-  providers: [LancamentoService],
+  providers: [LancamentoService,
+    PessoaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
