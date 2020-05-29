@@ -17,6 +17,7 @@ export class PessoasPesquisaComponent implements OnInit {
   ngOnInit() {
     //this.pesquisar();
    this.listarTudo();
+   //this.teste();
   }
 
  pesquisar(pagina = 0) {
@@ -26,7 +27,7 @@ export class PessoasPesquisaComponent implements OnInit {
   this.pessoaService.pesquisar(this.filtro)
   .then(resultado => {
     this.totalRegistros = resultado.total;
-    this.pessoas = resultado.pessoas.nome;
+    this.pessoas = resultado.pessoas;
   });
  }
 
@@ -34,5 +35,10 @@ export class PessoasPesquisaComponent implements OnInit {
    this.pessoaService.listarTodos()
    .then(result => this.pessoas = result);
  }
+
+ //teste() {
+   //console.log(this.pessoaService.listarTodos()
+   //.then(result => this.pessoas = result));
+ //}
 
 }
