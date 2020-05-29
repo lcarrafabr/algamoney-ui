@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
-import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
@@ -19,8 +18,7 @@ import { SharedModule } from './../shared/shared.module';
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
-    PessoasPesquisaComponent,
-    PessoasGridComponent
+    PessoasPesquisaComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { PessoaService } from './pessoas/pessoas-pesquisa/pessoa.service';
+import { PessoaService } from './pessoas/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
