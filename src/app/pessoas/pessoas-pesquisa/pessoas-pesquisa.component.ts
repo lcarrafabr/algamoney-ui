@@ -15,7 +15,8 @@ export class PessoasPesquisaComponent implements OnInit {
   constructor(private pessoaService: PessoaService) { }
 
   ngOnInit() {
-    this.pesquisar();
+    //this.pesquisar();
+   this.listarTudo();
   }
 
  pesquisar(pagina = 0) {
@@ -25,7 +26,13 @@ export class PessoasPesquisaComponent implements OnInit {
   this.pessoaService.pesquisar(this.filtro)
   .then(resultado => {
     this.totalRegistros = resultado.total;
-    this.pessoas = resultado.pessoas;
+    this.pessoas = resultado.pessoas.nome;
   });
  }
+
+ listarTudo() {
+   this.pessoaService.listarTodos()
+   .then(result => this.pessoas = result);
+ }
+
 }

@@ -23,11 +23,13 @@
     <div class="ui-g">
       <div class="ui-g-12">
 
-        <!--<app-pessoas-grid [pessoas]=pessoas></app-pessoas-grid>-->
-        <p-table [value]="pessoas"
-        [paginator]="true" [rows]="5"
+        <!--<app-pessoas-grid [pessoas]=pessoas></app-pessoas-grid>
         [rows]="filtro.itensPorPagina"
         [lazy]="true" [totalRecords]="totalRegistros"
+        -->
+        <p-table [value]="pessoas"
+        [paginator]="true" [rows]="5"
+
         [responsive]="true">
           <ng-template pTemplate="header">
               <tr>
