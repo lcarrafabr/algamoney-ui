@@ -1,3 +1,4 @@
+import { LazyLoadEvent } from 'primeng/api/public_api';
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class PessoasPesquisaComponent implements OnInit {
 
   ngOnInit() {
     //this.pesquisar();
-   this.listarTudo();
+   //this.listarTudo();
    //this.teste();
   }
 
@@ -35,6 +36,11 @@ export class PessoasPesquisaComponent implements OnInit {
    this.pessoaService.listarTodos()
    .then(result => this.pessoas = result);
  }
+
+ aoMudarPagina(event: LazyLoadEvent) {
+  const pagina = event.first / event.rows;
+  this.pesquisar(pagina);
+}
 
  //teste() {
    //console.log(this.pessoaService.listarTodos()
