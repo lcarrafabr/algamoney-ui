@@ -5,6 +5,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+import { ToastyModule } from 'ng2-toasty';
+
 import { NgxCurrencyModule } from "ngx-currency";
 
 import { AppComponent } from './app.component';
@@ -23,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+
+    ToastyModule,
 
     LancamentosModule,
     PessoasModule,

@@ -47,7 +47,8 @@
       [rows]="filtro.itensPorPagina"
       [lazy]="true" [totalRecords]="totalRegistros"
       (onLazyLoad)="aoMudarPagina($event)"
-      [responsive]="true">
+      [responsive]="true"
+      #tabela><!--Nome usado para poder resetar a tabela depois-->
         <ng-template pTemplate="emptymessage">
           Nenhum lançamento encontrado
         </ng-template>
@@ -90,7 +91,10 @@
                 </td>
                 <td class="col-acoes">
                   <a pButton icon="pi pi-pencil" style="margin-right: 5px;" pTooltip="Editar registro"></a>
-                  <button pButton icon="pi pi-trash" pTooltip="Remover registro"></button>
+                  <button pButton icon="pi pi-trash" pTooltip="Remover registro"
+                  (click)="excluir(lancamento)"
+                  ></button>
+
               </td>
             </tr>
         </ng-template>
