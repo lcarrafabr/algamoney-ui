@@ -5,8 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api/public_api';
 import { Table } from 'primeng/table/table';
 import { ToastyService } from 'ng2-toasty';
-
-import {MessageService} from 'primeng/api';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -22,7 +21,8 @@ export class LancamentosPesquisaComponent implements OnInit {
 
   constructor(
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService
     ) { }
 
   ngOnInit() {
@@ -44,6 +44,16 @@ export class LancamentosPesquisaComponent implements OnInit {
 
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
+  }
+
+  confirmarExclusao(lancamento: any) {
+
+    this.confirmation.confirm({
+      message: 'Deseja remover o lançamento?',
+      accept: () => {
+        this.excluir(lancamento);
+      }
+    });
   }
 
   excluir(lancamento: any) {
