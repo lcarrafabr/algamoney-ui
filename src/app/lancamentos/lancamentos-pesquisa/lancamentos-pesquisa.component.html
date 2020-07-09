@@ -90,7 +90,7 @@
                     {{lancamento.valor | currency: 'BRL'}}</span>
                 </td>
                 <td class="col-acoes">
-                  <a pButton icon="pi pi-pencil" style="margin-right: 5px;" pTooltip="Editar registro"></a>
+                  <a pButton icon="pi pi-pencil" style="margin-right: 5px;" [routerLink]="['/lancamentos', lancamento.codigo]" pTooltip="Editar registro"></a>
                   <button pButton icon="pi pi-trash" pTooltip="Remover registro"
                   (click)="confirmarExclusao(lancamento)"
                   ></button>
@@ -103,7 +103,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a icon="pi pi-file-o" iconPos="left" pButton label="Novo lançamento"></a>
+      <a icon="pi pi-file-o" iconPos="left" pButton label="Novo lançamento" routerLink="/lancamentos/novo"></a>
     </div>
 
   </div>

@@ -17,6 +17,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { InputTextModule } from 'primeng/inputtext';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
 
     SharedModule,
 

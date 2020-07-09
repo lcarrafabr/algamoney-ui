@@ -11,6 +11,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 import { PessoaService } from '../pessoas/pessoa.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,6 +23,7 @@ registerLocaleData(localePt);
   ],
   imports: [
     CommonModule,
+    RouterModule,
 
     ConfirmDialogModule,
     ToastyModule,
