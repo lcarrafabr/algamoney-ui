@@ -1,6 +1,6 @@
 export class Lancamento {
     codigo: number;
-    tipo: string = 'RECEITA';
+    tipoLancamento: string = 'RECEITA';
     descricao: string;
     dataVencimento: Date;
     dataPagamento: Date;
