@@ -85,17 +85,36 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
+
+    if (this.editando) {
+      this.atualizarlancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+
+  }
+
+  adicionarLancamento(form: FormControl) {
     
     this.lancamentoService.adicionar(this.lancamento)
     .then(() => {
       this.toasty.success('Lançamento cadastrado com sucesso!')
 
       form.reset();
-
       this.lancamento = new Lancamento();
     })
     .catch(erro => this.errorhandler.handle(erro));
+  }
 
+  atualizarlancamento(form: FormControl) {
+
+    this.lancamentoService.atualizar(this.lancamento)
+    .then(lancamento => {
+      this.lancamento = lancamento;
+
+      this.toasty.success('Lancamento atualizado com sucesso!');
+    })
+    .catch(erro => this.errorhandler.handle(erro));
   }
 
 }
