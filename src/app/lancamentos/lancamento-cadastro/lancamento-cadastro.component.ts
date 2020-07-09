@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriaService } from 'src/app/Categorias/categoria.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { PessoaService } from 'src/app/pessoas/pessoa.service';
+import { Lancamento } from 'src/app/core/model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -12,28 +17,45 @@ export class LancamentoCadastroComponent implements OnInit {
     { label: 'Despesa', value: 'DESPESA' }
   ];
 
-  categorias = [
-    {label: 'Lazer', value: 1},
-    {label: 'Alimentação', value: 2},
-    {label: 'Supermercado', value: 3},
-    {label: 'Farmácia', value: 4},
-    {label: 'Outros', value: 5},
-    {label: 'Financiamento', value: 6},
-    {label: 'Cuplover', value: 7}
-  ];
+  categorias = [];
+  pessoas = [];
+  lancamento = new Lancamento();
 
-  pessoas = [
-    {label: 'Luciano Carrafa Benfica', value: 1},
-    {label: 'Debora da Costa dos Santos Carrafa Benfica', value: 2},
-    {label: 'Cristiano Carrafa benfica', value: 3}
-
-
-
-  ];
-
-  constructor() { }
+  constructor(private categoriaService: CategoriaService,
+      private pessoaService: PessoaService,
+      private errorhandler: ErrorHandlerService
+    ) { }
 
   ngOnInit() {
+    this.carregarCategorias();
+    this.listarPessoas();
+  }
+
+
+  carregarCategorias() {
+
+    this.categoriaService.listarTodas()
+    .then(categorias => {
+      this.categorias = categorias.map(c => {
+        return {label: c.nome, value: c.codigo}
+      });
+    })
+    .catch(erro => this.errorhandler.handle(erro));
+  }
+
+  listarPessoas() {
+
+    this.pessoaService.listarTodos()
+    .then(pessoas => {
+      this.pessoas = pessoas.map( p => {
+        return {label:p.nome , value: p.codigo}
+      });
+    })
+    .catch(erro => this.errorhandler.handle(erro));
+  }
+
+  salvar(form: FormControl) {
+    console.log(this.lancamento)
   }
 
 }

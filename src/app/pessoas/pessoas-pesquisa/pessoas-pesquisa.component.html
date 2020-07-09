@@ -66,7 +66,8 @@
                   <td class="col-data-content">
                     <span class="ui-column-title">Status</span>
                     <a href="#" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
-                    tooltipPosition="top">
+                    tooltipPosition="top"
+                    (click)="alternarStatus(pessoa)">
                       {{pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
                   </td>
 
