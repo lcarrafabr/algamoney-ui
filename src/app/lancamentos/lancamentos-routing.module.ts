@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, Router, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';

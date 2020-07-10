@@ -5,6 +5,7 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { FormControl } from '@angular/forms';
 import { Pessoa } from 'src/app/core/model';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pessoa-cadastro',
@@ -18,12 +19,19 @@ export class PessoaCadastroComponent implements OnInit {
   constructor(private pessoaService: PessoaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
+    private route: ActivatedRoute,
     private title: Title
     ) { }
 
   ngOnInit() {
 
     this.title.setTitle('Cadastro de pessoas')
+
+    const codigoPessoa = this.route.snapshot.params['codigo'];
+
+    if (codigoPessoa) {
+      this.carregarPessoa(codigoPessoa);
+    }
   }
 
   salvar(form: FormControl) {
@@ -33,6 +41,15 @@ export class PessoaCadastroComponent implements OnInit {
 
       form.reset();
       this.pessoa = new Pessoa();
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarPessoa(codigo: number) {
+    
+    this.pessoaService.buscarPorCodigo(codigo)
+    .then(pessoa => {
+      this.pessoa = pessoa;
     })
     .catch(erro => this.errorHandler.handle(erro));
   }

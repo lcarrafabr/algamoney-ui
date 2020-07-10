@@ -72,7 +72,7 @@
                   </td>
 
                   <td class="col-acoes">
-                    <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" pTooltip="Editar registro"></a>
+                    <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" [routerLink]="['/pessoas', pessoa.codigo]" pTooltip="Editar registro"></a>
                     <button class="ui-button-raised" pButton icon="pi pi-trash" pTooltip="Remover registro"
                     (click)="confirmarExcluirPessoa(pessoa)"></button>
                 </td>
@@ -83,7 +83,7 @@
       </div>
 
       <div class="ui-g-12">
-        <a icon="pi pi-file-o" iconPos="left" class="ui-button-raised" pButton label="Nova Pessoa"></a>
+        <a icon="pi pi-file-o" iconPos="left" class="ui-button-raised" pButton label="Nova Pessoa" routerLink="/pessoas/novo"></a>
       </div>
 
     </div>
