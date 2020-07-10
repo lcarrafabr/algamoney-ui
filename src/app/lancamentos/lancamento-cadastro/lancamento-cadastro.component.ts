@@ -7,7 +7,8 @@ import { Lancamento } from 'src/app/core/model';
 import { FormControl } from '@angular/forms';
 import { LancamentoService } from '../lancamento.service';
 import { ToastyService } from 'ng2-toasty';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -30,10 +31,15 @@ export class LancamentoCadastroComponent implements OnInit {
       private lancamentoService: LancamentoService,
       private toasty: ToastyService,
       private errorhandler: ErrorHandlerService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router: Router,
+      private title: Title
     ) { }
 
   ngOnInit() {
+
+
+    this.title.setTitle('Cadastro de lançamentos')
 
    /* console.log(this.route.snapshot.params['codigo'])*/
 
@@ -57,6 +63,7 @@ export class LancamentoCadastroComponent implements OnInit {
     this,this.lancamentoService.buscaPorCodigo(codigo)
     .then(lancamento => {
       this.lancamento = lancamento;
+      this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorhandler.handle(erro));
   }
@@ -97,11 +104,13 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento(form: FormControl) {
     
     this.lancamentoService.adicionar(this.lancamento)
-    .then(() => {
+    .then(lancamentoAdicionado => {
       this.toasty.success('Lançamento cadastrado com sucesso!')
 
-      form.reset();
-      this.lancamento = new Lancamento();
+      //form.reset();
+      //this.lancamento = new Lancamento();
+
+      this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
     })
     .catch(erro => this.errorhandler.handle(erro));
   }
@@ -113,8 +122,25 @@ export class LancamentoCadastroComponent implements OnInit {
       this.lancamento = lancamento;
 
       this.toasty.success('Lancamento atualizado com sucesso!');
+
+      this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorhandler.handle(erro));
+  }
+
+  novo(form: FormControl) {
+    
+    form.reset();
+
+    setTimeout(function() {
+      this.lancamento = new Lancamento();
+    }.bind(this), 1)
+    
+    this.router.navigate(['/lancamentos/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição de lançamentos: ${this.lancamento.descricao}`)
   }
 
 }

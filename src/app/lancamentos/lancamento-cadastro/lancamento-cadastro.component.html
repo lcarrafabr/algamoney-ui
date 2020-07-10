@@ -75,7 +75,8 @@
 
       <div class="ui-g-12">
         <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid" ></button>
-        <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" class="ui-button-secondary ui-button-raised"></button>
+        <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" 
+        (click)="novo(f)" class="ui-button-secondary ui-button-raised"></button>
         <a routerLink="/lancamentos">Voltar para a pesquisa</a>
       </div>
 

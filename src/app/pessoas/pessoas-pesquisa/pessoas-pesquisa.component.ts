@@ -7,6 +7,7 @@ import { Table } from 'primeng/table/table';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { LazyLoadEvent } from 'primeng/api/public_api';
 import {ConfirmationService} from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -24,13 +25,15 @@ export class PessoasPesquisaComponent implements OnInit {
     private pessoaService: PessoaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
-    private confirmation: ConfirmationService
+    private confirmation: ConfirmationService,
+    private title: Title
     ) { }
 
   ngOnInit() {
     //this.pesquisar();
    //this.listarTudo();
    //this.teste();
+   this.title.setTitle('Pesquisa de pessoas')
   }
 
   pesquisar(pagina = 0) {
