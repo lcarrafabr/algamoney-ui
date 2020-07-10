@@ -14,6 +14,8 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { Title } from '@angular/platform-browser';
+import { CategoriaService } from '../Categorias/categoria.service';
+import { AuthService } from '../seguranca/auth.service';
 
 
 
@@ -39,6 +41,8 @@ registerLocaleData(localePt);
   providers: [
     LancamentoService,
     PessoaService,
+    CategoriaService,
+    AuthService,
 
     ConfirmationService,
     Title,

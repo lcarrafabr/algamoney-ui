@@ -16,6 +16,7 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
 
 
 
+
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
