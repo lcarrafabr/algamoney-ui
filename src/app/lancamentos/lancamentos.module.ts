@@ -17,7 +17,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { RouterModule } from '@angular/router';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,6 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
 
     SharedModule,
 
@@ -41,7 +40,8 @@ import { RouterModule } from '@angular/router';
     SelectButtonModule,
     DropdownModule,
     NgxCurrencyModule,
-    InputMaskModule
+    InputMaskModule,
+    LancamentosRoutingModule
   ],
   exports: [
     LancamentoCadastroComponent,
