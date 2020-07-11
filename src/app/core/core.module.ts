@@ -16,6 +16,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
 import { Title } from '@angular/platform-browser';
 import { CategoriaService } from '../Categorias/categoria.service';
 import { AuthService } from '../seguranca/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 
@@ -43,6 +44,7 @@ registerLocaleData(localePt);
     PessoaService,
     CategoriaService,
     AuthService,
+    JwtHelperService,
 
     ConfirmationService,
     Title,
