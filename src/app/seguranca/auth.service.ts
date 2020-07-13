@@ -48,6 +48,11 @@ export class AuthService {
     });
   }
 
+  temPermissao(permissao: string) {
+
+    return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permissao);
+  }
+
   private armazenarToken(token: string) {
 
     this.jwtPayLoad = this.jwtHelper.decodeToken(token);
