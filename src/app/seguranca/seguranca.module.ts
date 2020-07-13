@@ -6,6 +6,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,6 +25,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
     CommonModule,
     SegurancaRoutingModule,
+    FormsModule,
     
     CardModule,
     InputTextModule,

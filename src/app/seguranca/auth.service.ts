@@ -31,10 +31,21 @@ export class AuthService {
       console.log(response)
 
      this.armazenarToken(response['access_token'])
+
+     //console.log('Verifica: ' + this.armazenarToken(response['access_token'].access_token))
     })
     .catch(response => {
       console.log(response)
-    })
+
+      const responseError  = response.response.error;
+
+      if (response.status === 400) {
+        if (responseError.error === 'invalid_grant') {
+          return Promise.reject('Usuário ou senha inválida');
+        }
+      }
+      return Promise.reject(response);
+    });
   }
 
   private armazenarToken(token: string) {
