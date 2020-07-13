@@ -11,17 +11,16 @@ import { FormsModule } from '@angular/forms';
 
 
 
+export function tokenGetter(): string {
+  return localStorage.getItem('token');
+}
+
+
 @NgModule({
   declarations: [LoginFormComponent],
   imports: [
 
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          return '';
-        }
-      }
-    }),
+
 
     CommonModule,
     SegurancaRoutingModule,
@@ -29,11 +28,21 @@ import { FormsModule } from '@angular/forms';
     
     CardModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: ['http://localhost:8080/oauth/token']
+      }
+    })
+
   ],
   exports: [
     LoginFormComponent
   ],
-  providers: [JwtHelperService]
+  providers: [JwtHelperService
+  ]
 })
 export class SegurancaModule { }
