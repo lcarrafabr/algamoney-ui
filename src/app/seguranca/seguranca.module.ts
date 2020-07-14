@@ -7,6 +7,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MoneyHttpInterceptor } from './money-http-interceptors';
 
 
 
@@ -19,9 +21,6 @@ export function tokenGetter(): string {
 @NgModule({
   declarations: [LoginFormComponent],
   imports: [
-
-
-
     CommonModule,
     SegurancaRoutingModule,
     FormsModule,
@@ -42,7 +41,12 @@ export function tokenGetter(): string {
   exports: [
     LoginFormComponent
   ],
-  providers: [JwtHelperService
+  providers: [JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MoneyHttpInterceptor,
+      multi: true
+    }
   ]
 })
 export class SegurancaModule { }

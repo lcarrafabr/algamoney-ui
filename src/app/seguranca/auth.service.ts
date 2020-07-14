@@ -25,7 +25,7 @@ export class AuthService {
     .set('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenURL, body, { headers })
+    return this.http.post(this.oauthTokenURL, body, { headers, withCredentials: true })
     .toPromise()
     .then(response => {
       console.log(response)
@@ -51,6 +51,34 @@ export class AuthService {
   temPermissao(permissao: string) {
 
     return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permissao);
+  }
+
+  obterNovoAccessToken(): Promise<void> {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    .set('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+
+    const body = 'grant_type=refresh_token';
+
+    return this.http.post(this.oauthTokenURL, body, { headers, withCredentials: true } )
+    .toPromise()
+    .then(response => {
+
+      this.armazenarToken(response['access_token']);
+      console.log('Novo Access Tokem Criado')
+      return Promise.resolve(null);
+    })
+    .catch(response => {
+      console.log('Erro ao renovar Token.', response);
+      return Promise.resolve(null);
+    });
+  }
+
+  isAccessTokenInvalido() {
+
+    const token = localStorage.getItem('token');
+
+    return !token || this.jwtHelper.isTokenExpired(token);
   }
 
   private armazenarToken(token: string) {
