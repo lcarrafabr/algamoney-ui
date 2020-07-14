@@ -82,7 +82,8 @@ export class LancamentoCadastroComponent implements OnInit {
 
   listarPessoas() {
 
-    this.pessoaService.listarTodos()
+    //this.pessoaService.listarTodos()
+    this.pessoaService.pesquisarTodos()
     .then(pessoas => {
       this.pessoas = pessoas.map( p => {
         return {label:p.nome , value: p.codigo}

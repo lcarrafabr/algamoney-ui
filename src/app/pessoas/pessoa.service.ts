@@ -43,7 +43,17 @@ export class PessoaService {
       return resultado;
     });
   }
+//****************************************************************************************************************************************************************** *//
+  pesquisarTodos(): Promise<any> {
 
+    //const headers = new HttpHeaders().append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTQ0MDc3OTYsInVzZXJfbmFtZSI6ImFkbWluQGFsZ2Ftb25leS5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9DQVRFR09SSUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX1JFTU9WRVJfUEVTU09BIiwiUk9MRV9DQURBU1RSQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJST0xFX1JFTU9WRVJfTEFOQ0FNRU5UTyIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiJiZTk4NDcwNy01ODE5LTRjNDUtOTlmNy0zZTJlZWI2NGYzYTIiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.gbRVBbPdLBLf-AY3U9zJiAs8npWDEEcBiH4Lg5MS8T4');
+
+    //return this.http.get(`${this.pessoasUrl}`, { headers })
+    return this.http.get(`${this.pessoasUrl}/listar`)
+    .toPromise()
+    .then(response => response);
+  }
+//****************************************************************************************************************************************************************** *//
   listarTodos(): Promise<any> {
 
     //const headers = new HttpHeaders().append('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTQ0MDc3OTYsInVzZXJfbmFtZSI6ImFkbWluQGFsZ2Ftb25leS5jb20iLCJhdXRob3JpdGllcyI6WyJST0xFX0NBREFTVFJBUl9DQVRFR09SSUEiLCJST0xFX1BFU1FVSVNBUl9QRVNTT0EiLCJST0xFX1JFTU9WRVJfUEVTU09BIiwiUk9MRV9DQURBU1RSQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUEVTUVVJU0FSX0xBTkNBTUVOVE8iLCJST0xFX1JFTU9WRVJfTEFOQ0FNRU5UTyIsIlJPTEVfQ0FEQVNUUkFSX1BFU1NPQSIsIlJPTEVfUEVTUVVJU0FSX0NBVEVHT1JJQSJdLCJqdGkiOiJiZTk4NDcwNy01ODE5LTRjNDUtOTlmNy0zZTJlZWI2NGYzYTIiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.gbRVBbPdLBLf-AY3U9zJiAs8npWDEEcBiH4Lg5MS8T4');
@@ -53,7 +63,7 @@ export class PessoaService {
     .toPromise()
     .then(response => response[`content`]);
   }
-
+//****************************************************************************************************************************************************************** *//
 
   excluir(codigo: number): Promise<void> {
 
