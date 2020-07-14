@@ -53,6 +53,16 @@ export class AuthService {
     return this.jwtPayLoad && this.jwtPayLoad.authorities.includes(permissao);
   }
 
+  temQualquerPermissao(roles) {
+    for (const role of roles) {
+      if(this.temPermissao(role)){
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   obterNovoAccessToken(): Promise<void> {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')

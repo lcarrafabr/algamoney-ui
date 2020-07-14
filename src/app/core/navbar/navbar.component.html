@@ -11,10 +11,10 @@
   <ul class="navlbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ auth.jwtPayLoad?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo"
-    *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/lancamentos">Lançamentos</a></li>
+    *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/lancamentos">Lançamentos</a></li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"
-    *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')"><a routerLink="/pessoas">Pessoas</a></li>
+    *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/pessoas">Pessoas</a></li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"><a href="#">Logout</a></li>
   </ul>

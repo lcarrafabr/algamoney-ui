@@ -9,6 +9,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoneyHttpInterceptor } from './money-http-interceptors';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -46,7 +47,8 @@ export function tokenGetter(): string {
       provide: HTTP_INTERCEPTORS,
       useClass: MoneyHttpInterceptor,
       multi: true
-    }
+    },
+    AuthGuard
   ]
 })
 export class SegurancaModule { }
