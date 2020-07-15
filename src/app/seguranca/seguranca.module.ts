@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoneyHttpInterceptor } from './money-http-interceptors';
 import { AuthGuard } from './auth.guard';
+import { LogoutService } from './logout.service';
 
 
 
@@ -48,7 +49,8 @@ export function tokenGetter(): string {
       useClass: MoneyHttpInterceptor,
       multi: true
     },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SegurancaModule { }
