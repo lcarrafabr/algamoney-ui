@@ -11,6 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   oauthTokenURL = 'http://localhost:8080/oauth/token';
+  //oauthTokenURL = 'http://192.168.0.7:8080/oauth/token';
   jwtPayLoad: any;
 
   constructor(private http: HttpClient,
@@ -85,8 +86,15 @@ export class AuthService {
   }
 
   limparAccessToken() {
-    localStorage.removeItem('token');
+
+    return this.http.delete(`${this.oauthTokenURL}s/revoke`, { withCredentials: true })
+    .toPromise()
+    .then(() => {
+      console.log('entrei aqui')
+      localStorage.removeItem('token');
     this.jwtPayLoad = null;
+    })
+    
   }
 
   isAccessTokenInvalido() {
