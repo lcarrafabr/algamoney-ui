@@ -19,6 +19,7 @@ import { AuthService } from '../seguranca/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NaoAutorizadoComponent } from './nao-autorizado-encontrada.component';
 import { DashboardService } from '../dashboard/dashboard.service';
+import { RelatoriosService } from '../relatorios/relatorios.service';
 
 
 
@@ -50,6 +51,7 @@ registerLocaleData(localePt);
     DashboardService,
     AuthService,
     JwtHelperService,
+    RelatoriosService,
 
     ConfirmationService,
     Title,

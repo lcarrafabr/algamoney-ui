@@ -31,6 +31,7 @@ import { RelatoriosModule } from './relatorios/relatorios.module';
     SegurancaModule,
     DashboardModule,
     RelatoriosModule,
+    
     CoreModule,
     AppRoutingModule
   ],

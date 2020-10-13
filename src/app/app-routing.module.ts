@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
     { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#pessoasModule' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#dashboardModule' },
-    { path: 'relatorios', loadChildren: 'app/relatorios/relatorios.module#relatoriosModule' },
+    { path: 'relatorios', loadChildren: 'src/app/relatorios/relatorios.module#RelatoriosModule' },
   
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
