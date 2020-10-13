@@ -86,6 +86,8 @@ export class LancamentoCadastroComponent implements OnInit {
 
     //const dtVencimento = input.root.get('dataVencimento').value;
 
+    //console.log(input.root.get('dataVencimento').value);
+
     return (input.value ? null : { obrigatoriedade: true });
   }
 
@@ -151,6 +153,8 @@ export class LancamentoCadastroComponent implements OnInit {
     this.lancamentoService.adicionar(this.formulario.value)
     .then(lancamentoAdicionado => {
       this.toasty.success('Lançamento cadastrado com sucesso!')
+
+      //console.log(this.formulario.get('dataVencimento'));
 
       //form.reset();
       //this.lancamento = new Lancamento();

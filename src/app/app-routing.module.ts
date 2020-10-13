@@ -6,7 +6,13 @@ import { NaoAutorizadoComponent } from './core/nao-autorizado-encontrada.compone
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
+
+    { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
+    { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#pessoasModule' },
+    { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#dashboardModule' },
+    { path: 'relatorios', loadChildren: 'app/relatorios/relatorios.module#relatoriosModule' },
+  
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
     { path: 'nao-autorizado', component: NaoAutorizadoComponent },
     { path: '**', redirectTo: 'pagina-nao-encontrada' }

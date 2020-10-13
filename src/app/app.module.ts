@@ -13,6 +13,8 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'
 import { SegurancaModule } from './seguranca/seguranca.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { RelatoriosModule } from './relatorios/relatorios.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     LancamentosModule,
     PessoasModule,
     SegurancaModule,
+    DashboardModule,
+    RelatoriosModule,
     CoreModule,
     AppRoutingModule
   ],

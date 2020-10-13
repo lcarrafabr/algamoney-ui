@@ -18,6 +18,7 @@ import { CategoriaService } from '../Categorias/categoria.service';
 import { AuthService } from '../seguranca/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NaoAutorizadoComponent } from './nao-autorizado-encontrada.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 
 
@@ -46,6 +47,7 @@ registerLocaleData(localePt);
     LancamentoService,
     PessoaService,
     CategoriaService,
+    DashboardService,
     AuthService,
     JwtHelperService,
 
