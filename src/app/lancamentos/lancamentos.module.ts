@@ -18,6 +18,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,9 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     DropdownModule,
     NgxCurrencyModule,
     InputMaskModule,
+    FileUploadModule,
+    ProgressSpinnerModule,
+
     LancamentosRoutingModule
   ],
   exports: [

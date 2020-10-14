@@ -27,6 +27,8 @@ export class LancamentoCadastroComponent implements OnInit {
   //lancamento = new Lancamento();
   formulario: FormGroup;
 
+  uploadEmAndamento= false;
+
   constructor(private categoriaService: CategoriaService,
       private pessoaService: PessoaService,
       private lancamentoService: LancamentoService,
@@ -76,8 +78,9 @@ export class LancamentoCadastroComponent implements OnInit {
         codigo: [null, Validators.required],
         nome: []
       }),
-
-      observacao: []
+      observacao: [],
+      anexo: [],
+      urlAnexo: []
 
     });
   }
@@ -198,6 +201,50 @@ export class LancamentoCadastroComponent implements OnInit {
 
   atualizarTituloEdicao() {
     this.title.setTitle(`Edição de lançamentos: ${this.formulario.get('descricao').value}`)
+  }
+
+  get urlUploadAnexo() {
+
+    return this.lancamentoService.urlUploadAnexo();
+  }
+
+  antesUploadAnexo() {
+    this.uploadEmAndamento = true;
+  }
+
+  aoTerminarUploadAnexo(event) {
+
+    const anexo = event.originalEvent.body;
+
+    this.formulario.patchValue({
+      anexo: anexo.nome,
+      urlAnexo: anexo.url
+    });
+    this.uploadEmAndamento = false;
+  }
+
+  erroUpload(event) {
+
+    this.toasty.error('Erro ao tentar enviar o anexo.');
+    this.uploadEmAndamento = false;
+  }
+
+  get nomeAnexo() {
+
+    const nome = this.formulario.get('anexo').value;
+
+    if(nome) {
+      return nome.substring(nome.indexOf('_') + 1, nome.lenght);
+    }
+
+    return '';
+  }
+
+  removerAnexo() {
+    this.formulario.patchValue({
+      anexo: null,
+      urlAnexo: null
+    });
   }
 
 }
