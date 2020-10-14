@@ -17,6 +17,9 @@ export class LoginFormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    if (this.auth.isAccessTokenInvalido()) {
+        this.router.navigate(['/dashboard']);
+    }
   }
 
   login(usuario: string, senha: string) {

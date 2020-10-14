@@ -3,7 +3,7 @@ import { PessoaService } from '../pessoa.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { FormControl } from '@angular/forms';
-import { Pessoa } from 'src/app/core/model';
+import { Contato, Pessoa } from 'src/app/core/model';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
-
+  
   constructor(private pessoaService: PessoaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
@@ -34,6 +34,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.carregarPessoa(codigoPessoa);
     }
   }
+
 
   get editando() {
     return Boolean(this.pessoa.codigo);

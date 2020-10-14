@@ -8,19 +8,21 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
 
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { SharedModule } from './../shared/shared.module';
 import { PessoasRoutingModule } from './pessoas-routing.module';
-
-
+import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component';
 
 
 @NgModule({
   declarations: [
     PessoaCadastroComponent,
-    PessoasPesquisaComponent
+    PessoasPesquisaComponent,
+    PessoaCadastroContatoComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,9 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
     InputMaskModule,
     CardModule,
     TableModule,
+    PanelModule,
+    DialogModule,
+
     PessoasRoutingModule
   ],
   exports: [

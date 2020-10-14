@@ -21,10 +21,10 @@ export class RelatoriosService {
     let params = new HttpParams();
 
     params = params.set("inicio", moment(inicio,"DD/MM/YYYY").format("YYYY-MM-DD"));
- params = params.set("fim",moment(fim,"DD/MM/YYYY").format("YYYY-MM-DD"));
+    params = params.set("fim",moment(fim,"DD/MM/YYYY").format("YYYY-MM-DD"));
 
     //Para a requisição
-    return this.http.get(`${this.lancamentosURL}/relatorio/por-pessoa`, { params, responseType: 'blob' })
+    return this.http.get(`${this.lancamentosURL}/relatorios/por-pessoa`, { params, responseType: 'blob' })
         .toPromise()
         .then(response => response);
 

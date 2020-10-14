@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,16 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   oauthTokenURL: string;
+  oauthTokenLogoutURL: string;
   //oauthTokenURL = 'http://192.168.0.7:8080/oauth/token';
   jwtPayLoad: any;
 
   constructor(private http: HttpClient,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private router: Router
     ) { 
       this.oauthTokenURL = `${environment.apiUrl}/oauth/token`
+      this.oauthTokenLogoutURL = `${environment.apiUrl}`
       this.carregarToken();
     }
 
@@ -89,12 +93,14 @@ export class AuthService {
 
   limparAccessToken() {
 
-    return this.http.delete(`${this.oauthTokenURL}s/revoke`, { withCredentials: true })
+    return this.http.delete(`${this.oauthTokenLogoutURL}/tokens/revoke`, { withCredentials: true })
     .toPromise()
     .then(() => {
-      console.log('entrei aqui')
+      //console.log('entrei aqui')
       localStorage.removeItem('token');
-    this.jwtPayLoad = null;
+      this.jwtPayLoad = null;
+      this.router.navigate(['/login']);
+    
     })
     
   }
