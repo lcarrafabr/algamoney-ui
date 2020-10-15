@@ -7,4 +7,6 @@ app.get('/*', function(req, res) {
     res.sendFile(__dirname + '/dist/index.html');
 });
 
-app.listen(process.env.PORT || 4200);
+app.listen(process.env.PORT || 4200, '0.0.0.0', function() {
+    console.log('A porta sendo usada é: ' + process.env.PORT || 4200);
+});
