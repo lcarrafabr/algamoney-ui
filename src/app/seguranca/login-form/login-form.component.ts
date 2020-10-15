@@ -11,7 +11,7 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private auth: AuthService,
+  constructor(public auth: AuthService,
       private errorHandler: ErrorHandlerService,
       private router: Router
     ) { }

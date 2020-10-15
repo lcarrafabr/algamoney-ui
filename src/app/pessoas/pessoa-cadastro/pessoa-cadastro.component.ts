@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PessoaService } from '../pessoa.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Contato, Pessoa } from 'src/app/core/model';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +15,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PessoaCadastroComponent implements OnInit {
 
   pessoa = new Pessoa();
+  estados: any[];
+  cidades: any[];
+  estadoSelecionado: number;
   
   constructor(private pessoaService: PessoaService,
     private toasty: ToastyService,
@@ -30,6 +33,8 @@ export class PessoaCadastroComponent implements OnInit {
 
     const codigoPessoa = this.route.snapshot.params['codigo'];
 
+    this.carregarEstados();
+
     if (codigoPessoa) {
       this.carregarPessoa(codigoPessoa);
     }
@@ -40,7 +45,7 @@ export class PessoaCadastroComponent implements OnInit {
     return Boolean(this.pessoa.codigo);
   }
 
-  salvar(form: FormControl) {
+  salvar(form: NgForm) {
 
     if (this.editando) {
       
@@ -52,7 +57,7 @@ export class PessoaCadastroComponent implements OnInit {
 
   }
 
-  adicionarPessoa(form: FormControl) {
+  adicionarPessoa(form: NgForm) {
     this.pessoaService.adicionar(this.pessoa)
     .then(() => {
       this.toasty.success('Pessoa cadastrada com sucesso!');
@@ -63,7 +68,7 @@ export class PessoaCadastroComponent implements OnInit {
     .catch(erro => this.errorHandler.handle(erro));
   }
 
-  atualizarPessoa(form: FormControl) {
+  atualizarPessoa(form: NgForm ) {
       
     this.pessoaService.atualizar(this.pessoa)
     .then(pessoa => {
@@ -81,12 +86,20 @@ export class PessoaCadastroComponent implements OnInit {
     this.pessoaService.buscarPorCodigo(codigo)
     .then(pessoa => {
       this.pessoa = pessoa;
+
+      this.estadoSelecionado = (this.pessoa.endereco.cidade) ? this.pessoa.endereco.cidade.estado.codigo : null;
+
+      if(this.estadoSelecionado) {
+        this.pesquisarCidades();
+      }
+
+
       this.atualizarTituloEdicao()
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
 
-  novo(form: FormControl) {
+  novo(form: NgForm) {
 
     form.reset();
 
@@ -99,6 +112,24 @@ export class PessoaCadastroComponent implements OnInit {
 
   atualizarTituloEdicao() {
     this.title.setTitle(`Edição de ${this.pessoa}`)
+  }
+
+  carregarEstados() {
+
+    this.pessoaService.listarEstados()
+    .then(lista => {
+      this.estados = lista.map(uf => ({label: uf.nome, value: uf.codigo}));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  pesquisarCidades() {
+
+    this.pessoaService.pesquisarCidades(this.estadoSelecionado)
+    .then(lista => {
+      this.cidades = lista.map(c => ({label: c.nome, value: c.codigo}));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
 }

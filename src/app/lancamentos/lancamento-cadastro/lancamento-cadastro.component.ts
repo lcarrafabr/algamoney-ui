@@ -29,6 +29,9 @@ export class LancamentoCadastroComponent implements OnInit {
 
   uploadEmAndamento= false;
 
+  dataVencimento: Date;
+  dataPagamento: Date;
+
   constructor(private categoriaService: CategoriaService,
       private pessoaService: PessoaService,
       private lancamentoService: LancamentoService,
@@ -56,6 +59,9 @@ export class LancamentoCadastroComponent implements OnInit {
 
     this.carregarCategorias();
     this.listarPessoas();
+
+    this.dataVencimento = new Date(this.dataVencimento);
+    this.dataPagamento = new Date(this.dataPagamento);
 
   }
 

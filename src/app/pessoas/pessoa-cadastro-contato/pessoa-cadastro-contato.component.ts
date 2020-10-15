@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Contato } from 'src/app/core/model';
 
 @Component({
@@ -26,7 +26,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
     this.contatoIndex = this.contatos.length;
   }
 
-  confirmarContato(frm: FormControl) {
+  confirmarContato(frm: NgForm) {
 
     this.contatos[this.contatoIndex] = this.clonarContato(this.contato);
     //this.pessoa.contatos.push(this.clonarContato(this.contato)); // <<=== Método alterado após preciar editar
@@ -53,7 +53,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
     this.contatoIndex = index;
   }
 
-  editando() {
+  get editando() {
     console.log(this.contato.codigo)
     return this.contato && this.contato.codigo;
   }

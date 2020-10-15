@@ -55,12 +55,12 @@
 
                   <td>
                     <span class="ui-column-title">Cidade</span>
-                    {{pessoa.endereco.cidade}}
+                    {{pessoa.endereco.cidade?.nome}}
                   </td>
 
                   <td class="col-data-content">
                     <span class="ui-column-title">Estado</span>
-                    {{pessoa.endereco.estado}}
+                    {{pessoa.endereco.cidade?.estado.nome}}
                   </td>
 
                   <td class="col-data-content">

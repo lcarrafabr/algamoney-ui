@@ -16,6 +16,7 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 import { SharedModule } from './../shared/shared.module';
 import { PessoasRoutingModule } from './pessoas-routing.module';
 import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa-cadastro-contato.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { PessoaCadastroContatoComponent } from './pessoa-cadastro-contato/pessoa
     TableModule,
     PanelModule,
     DialogModule,
+    DropdownModule,
 
     PessoasRoutingModule
   ],

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  exibindoMenu: boolean;
+
   constructor(
     public auth: AuthService,
     private logoutService: LogoutService,
