@@ -95,7 +95,7 @@ export class LancamentoService {
      /* const lancamentosAlterado = response[`content`];*/
      const lancamentosAlterado = response as Lancamento;
 
-      this.converterStringParaDatas([lancamento]);
+      this.converterStringParaDatas([lancamentosAlterado]);
 
       return lancamentosAlterado;
     });
