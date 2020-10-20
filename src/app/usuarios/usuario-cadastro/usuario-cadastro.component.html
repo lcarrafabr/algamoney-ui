@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div>
+                <h2>Novo usuário</h2>
+            </div>
+
+            <form autocomplete="off" #f="ngForm" (ngSubmit)="adicionar(f)">
+                <div class="ui-g-4 ui-fluid">
+                    <label>Nome pessoa usuário</label>
+                    <input pInputText type="text" autocomplete="disabled" name="nomeUsuario" [(ngModel)]="usuario.nome" required>
+
+                    <!--<app-message [control]="nomeUsuario" error="required" text="Informe um nome."></app-message>-->
+                </div>
+
+                <div class="ui-g-6 ui-fluid">
+                    <label>E-mail</label>
+                    <input pInputText type="email" autocomplete="disabled" name="email" [(ngModel)]="usuario.email" required>
+                </div>
+
+                <div class="ui-g-4 ui-fluid">
+                    <label>Senha</label>
+                    <input pInputText type="password" autocomplete="disabled" name="senha" #senha [(ngModel)]="usuario.senha" required>
+                </div>
+                <div class="ui-g-4 ui-fluid">
+                    <label>Repetir senha</label>
+                    <input pInputText type="password" autocomplete="disabled" name="repetirSenha" #repetirSenha  
+                    (blur)="validaSenhas(senha.value, repetirSenha.value)"required>
+                </div>
+
+                <div class="ui-g-12">
+                    <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid"></button>
+                    <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" 
+                     class="ui-button-secondary ui-button-raised"></button>
+                    <a routerLink="/usuarios">Voltar para a pesquisa de usuários</a>
+     
+                </div>
+            </form>
+        </div>
+    </div>
+</div>>

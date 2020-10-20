@@ -61,3 +61,11 @@ export class Cidade {
     nome: string;
     estado= new Estado;
 }
+
+export class Usuario {
+
+    codigo:number;
+    nome: string;
+    email: string;
+    senha: string;
+}

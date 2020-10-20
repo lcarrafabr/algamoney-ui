@@ -11,6 +11,7 @@ const routes: Routes = [
     { path: 'pessoas', loadChildren: 'src/app/pessoas/pessoas.module#PessoasModule' },
     { path: 'dashboard', loadChildren: 'src/app/dashboard/dashboard.module#DashboardModule' },
     { path: 'relatorios', loadChildren: 'src/app/relatorios/relatorios.module#RelatoriosModule' },
+    { path: 'usuarios', loadChildren: 'src/app/usuarios/usuarios.module#UsuariosModule' },
   
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },

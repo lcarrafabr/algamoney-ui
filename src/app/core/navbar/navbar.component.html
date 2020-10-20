@@ -23,6 +23,9 @@
     <li class="navbar-menuitem" routerLinkActive="ativo"
     *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/relatorios/lancamentos">Relatórios</a></li>
 
+    <li class="navbar-menuitem" routerLinkActive="ativo"
+    *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/usuarios">Usuários</a></li>
+
     <li class="navbar-menuitem" routerLinkActive="ativo"><a href="javascript: ;" (click)="logout()">Logout</a></li>
   </ul>
 
