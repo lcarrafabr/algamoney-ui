@@ -20,11 +20,11 @@
 
                 <div class="ui-g-4 ui-fluid">
                     <label>Senha</label>
-                    <input pInputText type="password" autocomplete="disabled" name="senha" #senha [(ngModel)]="usuario.senha" required>
+                    <input pInputText type="password" autocomplete="disabled" name="senha" #senha [(ngModel)]="usuario.senha" minlength="8" required>
                 </div>
                 <div class="ui-g-4 ui-fluid">
                     <label>Repetir senha</label>
-                    <input pInputText type="password" autocomplete="disabled" name="repetirSenha" #repetirSenha  
+                    <input pInputText type="password" autocomplete="disabled" name="repetirSenha" minlength="8" #repetirSenha  
                     (blur)="validaSenhas(senha.value, repetirSenha.value)"required>
                 </div>
 
@@ -38,4 +38,15 @@
             </form>
         </div>
     </div>
-</div>>
+
+    <div class="ui-g-11">
+        <p-panel header="Permissões">
+            <app-usuario-cadastro-permissao></app-usuario-cadastro-permissao>
+        </p-panel>
+    </div>
+
+</div>
+
+
+
+

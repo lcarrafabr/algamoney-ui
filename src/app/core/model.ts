@@ -69,3 +69,9 @@ export class Usuario {
     email: string;
     senha: string;
 }
+
+export class UsuarioPermissoes {
+
+    codigoUsuario: number;
+    codigoPermissao: number;
+}

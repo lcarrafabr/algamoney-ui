@@ -4,10 +4,10 @@
             <h1>Usuários</h1>
 
             <div>
-                <form autocomplete="off">
+                <form autocomplete="off" (ngSubmit)="pesquisar()">
                     <div class="ui-g-12 ui-fluid">
                         <label>Usuario</label>
-                        <input pInputText type="text" placeholder="Pesquisa de usuário">
+                        <input pInputText type="text" placeholder="Pesquisa de usuário" [(ngModel)]="filtro.nome" name="nome">
                     </div>
 
                     <div class="ui-g-12">
@@ -22,7 +22,8 @@
                     <p-table [value]="usuarios"
                     [responsive]="true"
                     [paginator]="true"
-                    [rows]="filtro.itensPorPagina">
+                    [rows]="filtro.itensPorPagina"
+                    #tabela>
                         <ng-template pTemplate="emptymessage">
                             Nenhum lançamento encontrado
                           </ng-template>
@@ -38,8 +39,11 @@
                                 <td>{{ usuario.nome }}</td>
                                 <td>{{ usuario.email }}</td>
                                 <td>
-                                    <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" pTooltip="Editar registro"></a>
-                                    <a class="ui-button-raised" pButton icon="pi pi-trash" style="margin-right: 5px;" pTooltip="Excluir registro"></a>
+                                    <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" 
+                                    [routerLink]="['/usuarios/cadastro', usuario.codigo]" pTooltip="Editar registro"></a>
+
+                                    <a class="ui-button-raised" pButton icon="pi pi-trash" style="margin-right: 5px;" pTooltip="Excluir registro"
+                                    (click)="confirmarExclusaousuario(usuario)"></a>
                                 </td>
                             </tr>
                         </ng-template>

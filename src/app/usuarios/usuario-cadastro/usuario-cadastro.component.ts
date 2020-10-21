@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Usuario } from 'src/app/core/model';
@@ -15,15 +16,24 @@ export class UsuarioCadastroComponent implements OnInit {
   usuario = new Usuario;
   validaFormulario = false;
   resenha: string;
+  codigoUsuario: number;
 
   constructor(
     private usuarioService: UsuarioService,
     private errorHandler: ErrorHandlerService,
-    private toasty: ToastyService
+    private toasty: ToastyService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    this.codigoUsuario = this.route.snapshot.params['codigo']
+
+    if (this.codigoUsuario) {
+      this.carregarUsuario(this.codigoUsuario);
+    }
   }
+
 
   adicionar(form: NgForm) {
 
@@ -56,5 +66,29 @@ export class UsuarioCadastroComponent implements OnInit {
       this.resenha = repetirSenha
     }
   }
+
+  carregarUsuario(codigo: number) {
+
+    this.usuarioService.buscarPorId(codigo)
+    .then(usuario => {
+      this.usuario = usuario;
+
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  atualizarUsuario(form: NgForm) {
+
+    this.usuarioService.atualizarUsuario(this.usuario)
+    .then(usuario => {
+      this.usuario = usuario;
+
+      this.toasty.success('Usuario atualizado com sucesso!');
+    
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../core/model';
@@ -15,11 +15,13 @@ export class UsuarioFiltro {
 export class UsuarioService {
 
   usuarioURL: string;
+  permissoesURL: string;
 
   constructor(
     private http: HttpClient,
   ) {
     this.usuarioURL = `${environment.apiUrl}/usuarios`
+    this.permissoesURL = `${environment.apiUrl}/permissoes`
    }
 
    listarTodosusuarios(): Promise<any> {
@@ -45,6 +47,54 @@ export class UsuarioService {
       const usuario = response as Usuario
 
       return usuario
+    });
+   }
+
+
+   atualizarUsuario(usuario: Usuario): Promise<Usuario> {
+
+    return this.http.put(`${this.usuarioURL}/${usuario.codigo}`, usuario)
+    .toPromise()
+    .then(response => {
+      const userAlterado = response as Usuario
+      return userAlterado;
+    });
+   }
+
+   excluirUsuario(codigo: number): Promise<void> {
+
+    return this.http.delete(`${this.usuarioURL}/${codigo}`)
+    .toPromise()
+    .then(() => null);
+   }
+
+   pesquisar(filtro: UsuarioFiltro): Promise<any> {
+
+    let params = new HttpParams;
+
+    params = params.set('page', filtro.pagina.toString());
+    params = params.set('size', filtro.itensPorPagina.toString());
+
+    if(filtro.nome){
+      params = params.set('nome', filtro.nome)
+    }
+
+    return this.http.get(`${this.usuarioURL}`, { params })
+    .toPromise()
+    .then(response => {
+      const usuario = response
+
+      return response;
     })
    }
+
+   listarRoles(): Promise<any> {
+
+    return this.http.get(`${this.permissoesURL}/listar`)
+    .toPromise()
+    .then(response => {
+      return response;
+    });
+ }
+
 }

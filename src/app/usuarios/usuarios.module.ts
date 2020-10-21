@@ -11,12 +11,16 @@ import { UsuarioPesquisaComponent } from './usuario-pesquisa/usuario-pesquisa.co
 import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import {PickListModule} from 'primeng/picklist';
+import { UsuarioCadastroPermissaoComponent } from './usuario-cadastro-permissao/usuario-cadastro-permissao.component';
+import { PanelModule } from 'primeng/panel';
 
 
 @NgModule({
   declarations: [
     UsuarioPesquisaComponent, 
-    UsuarioCadastroComponent
+    UsuarioCadastroComponent, 
+    UsuarioCadastroPermissaoComponent
   ],
   imports: [
     FormsModule,
@@ -25,6 +29,8 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     TableModule,
     DialogModule,
+    PickListModule,
+    PanelModule,
 
     SharedModule,
 
@@ -33,7 +39,8 @@ import { DialogModule } from 'primeng/dialog';
   ],
   exports: [
     UsuarioPesquisaComponent,
-    UsuarioCadastroComponent
+    UsuarioCadastroComponent,
+    UsuarioCadastroPermissaoComponent
   ]
 })
 export class UsuariosModule { }
