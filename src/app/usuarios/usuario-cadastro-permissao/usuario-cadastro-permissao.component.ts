@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { UsuarioService } from '../usuario.service';
 import { UsuarioPermissoes } from 'src/app/core/model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-cadastro-permissao',
@@ -34,7 +35,7 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
     this.usuarioService.listarRoles().then(role => this.list1 = role);
     this.list2 = [];
 
-    this.codigoUsuario = this.route.snapshot.params['codigo']
+    this.codigoUsuario = parseInt(this.route.snapshot.params['codigo']); 
   }
 
  prepararNovoContato() {
@@ -50,11 +51,27 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
 
     codigoPermissao = this.list2[i].codigo
 
-    this.preparaEnvio.push([this.codigoUsuario, codigoPermissao]);
-    //console.log(codigoPermissao)
+    this.usuarioPermissao.codigo_usuario = this.codigoUsuario;
+    this.usuarioPermissao.codigo_permissao = this.list2[i].codigo
+    //this.preparaEnvio.push([this.codigoUsuario, codigoPermissao]);
+    this.adicionar();
   }
 
   console.log(this.preparaEnvio);
 }
+
+
+adicionar() {
+
+    this.usuarioService.adicionarPermissaoUsuario(this.usuarioPermissao)
+  .then(() => {
+    this.toasty.success('Usuario cadastrado com sucesso!');
+
+    //form.reset();
+    //this.usuario = new Usuario;
+  })
+  .catch(erro => this.errorHandler.handle(erro));
+}
+  
 
 }

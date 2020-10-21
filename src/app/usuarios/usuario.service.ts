@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Usuario } from '../core/model';
+import { Usuario, UsuarioPermissoes } from '../core/model';
 
 export class UsuarioFiltro {
   nome: string;
@@ -16,12 +16,14 @@ export class UsuarioService {
 
   usuarioURL: string;
   permissoesURL: string;
+  usuarioPermissoesURL: string;
 
   constructor(
     private http: HttpClient,
   ) {
     this.usuarioURL = `${environment.apiUrl}/usuarios`
     this.permissoesURL = `${environment.apiUrl}/permissoes`
+    this.usuarioPermissoesURL = `${environment.apiUrl}`
    }
 
    listarTodosusuarios(): Promise<any> {
@@ -95,6 +97,12 @@ export class UsuarioService {
     .then(response => {
       return response;
     });
+ }
+
+ adicionarPermissaoUsuario(usuarioPermissao: UsuarioPermissoes): Promise<Usuario> {
+
+  return this.http.post<Usuario>(`${this.usuarioPermissoesURL}/user_permition`, usuarioPermissao)
+  .toPromise();
  }
 
 }

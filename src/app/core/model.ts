@@ -72,6 +72,7 @@ export class Usuario {
 
 export class UsuarioPermissoes {
 
-    codigoUsuario: number;
-    codigoPermissao: number;
+    codigo_usuario: number;
+    codigo: number;
+    codigo_permissao: number;
 }
