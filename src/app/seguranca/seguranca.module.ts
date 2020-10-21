@@ -21,6 +21,7 @@ export function tokenGetter(): string {
 }
 
 
+
 @NgModule({
   declarations: [LoginFormComponent],
   imports: [
@@ -31,6 +32,7 @@ export function tokenGetter(): string {
     CardModule,
     InputTextModule,
     ButtonModule,
+
 
 //    JwtModule.forRoot({
 //      config: {
@@ -53,8 +55,8 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['https://carrafamoney-hmg-api.herokuapp.com'],
-        disallowedRoutes: ['https://carrafamoney-hmg-api.herokuapp.com/oauth/token']
+        allowedDomains: environment.tokenWhitelistedDomains,
+        disallowedRoutes: environment.tokenBlackListdRoutes
       }
     })
 
