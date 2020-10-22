@@ -51,7 +51,7 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
   carregaListaPermisscoes() {
     this.usuarioService.listarRoles().then(role => {
       this.list1 = role;
-      this.removePermissoesDisponiveisdaLista();
+      //this.removePermissoesDisponiveisdaLista();
     });
   }
 
@@ -114,29 +114,39 @@ preparaArray(dados: Array<any>, nome: string, email: string) {
 
     this.permissoesUsuarios.push({descricao, nome, email});
   }
-  //this.removePermissoesDisponiveisdaLista();
+  this.removePermissoesDisponiveisdaLista();
 }
 
 removePermissoesDisponiveisdaLista() {
 
-  let copia: any[];
+  let copiaList01 = [];
+  let copiaList02 = [];
+  let index = this.permissoesUsuarios.length;
 
-  copia = this.list1;
+  //copia = this.list1;
 
 
-  let permissao = 'ROLE_CADASTRAR_CATEGORIA';
+  let permissao: string;
 
   for(let i = 0, l = this.list1.length; i < l; i ++) {
 
-    if(this.list1[i].descricao === permissao) {
-      console.log('Achei: ' + this.list1[i].descricao);
-      copia.splice(i, 1);
-      
+    if (i < index && i != index) {
+      permissao = this.permissoesUsuarios[i].descricao;
+      console.log(index);
     }
     
+    if(this.list1[i].descricao != permissao) {
+      //console.log('Achei: ' + this.list1[i].descricao);
+      //copia.splice(i, 1);
+      copiaList01.push(this.list1[i]);
+    
+    } else {
+      copiaList02.push(this.list1[i]);
+    }
+    //index --;
   }
-
-  console.log(copia);
+  this.list1 = copiaList01;
+  this.list2 = copiaList02;
 }
   
 
