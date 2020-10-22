@@ -31,7 +31,10 @@ export class UsuarioPesquisaComponent implements OnInit {
 
   listarTudo() {
     this.usuarioService.listarTodosusuarios()
-    .then(result => this.usuarios = result);
+    .then(result => {
+      console.log(result);
+      this.usuarios = result
+    });
   }
 
   confirmarExclusaousuario(usuario: any) {

@@ -35,6 +35,7 @@ export class UsuarioService {
       });
    }
 
+
    adicionar(usuario: Usuario): Promise<Usuario> {
 
     return this.http.post<Usuario>(this.usuarioURL, usuario)
@@ -42,6 +43,17 @@ export class UsuarioService {
    }
 
    buscarPorId(codigo: number): Promise<Usuario>  {
+
+    return this.http.get(`${this.usuarioURL}/${codigo}`)
+    .toPromise()
+    .then(response => {
+      const usuario = response as Usuario
+
+      return usuario
+    });
+   }
+
+   buscarPorId2(codigo: number): Promise<any>  {
 
     return this.http.get(`${this.usuarioURL}/${codigo}`)
     .toPromise()

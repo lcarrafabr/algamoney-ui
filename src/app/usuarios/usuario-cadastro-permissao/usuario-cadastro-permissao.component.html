@@ -5,7 +5,7 @@
           (click)="prepararNovoContato()"></button>
         </div>
         <div class="ui-g-10">
-          <p-table [value]="" [responsive]="true">
+          <p-table [value]="permissoesUsuarios" [responsive]="true">
             <ng-template pTemplate="header" #name>
               <tr>
                 <th>Usuario</th>
@@ -15,18 +15,18 @@
               </tr>
             </ng-template>
     
-            <ng-template pTemplate="body" let-contato let-rowIndex="rowIndex">
+            <ng-template pTemplate="body" let-contato>
               <tr>
                 <td>{{ contato.nome }}</td>
                 <td>{{ contato.email }}</td>
-                <td>{{ contato.telefone }}</td>
+                <td>{{ contato.descricao }}</td>
                 <td class="col-acoes">
     
                   <button class="ui-button-raised" pButton icon="pi pi-pencil" type="button" pTooltip="Editar" tooltipPosition="top"
-                  ></button>
+                  (click)="prepararEdicaoCOntato(contato, rowIndex)"></button>
     
                   <button class="ui-button-raised" pButton icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                  ></button>
+                  (click)="removerContato(rowIndex)"></button>
     
                 </td>
               </tr>

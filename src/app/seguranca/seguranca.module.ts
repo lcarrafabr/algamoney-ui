@@ -32,33 +32,23 @@ export function tokenGetter(): string {
     CardModule,
     InputTextModule,
     ButtonModule,
-
-
-//    JwtModule.forRoot({
-//      config: {
-//        tokenGetter: tokenGetter,
-//        whitelistedDomains: environment.tokenWhitelistedDomains,
-//        blackListedRoutes: environment.tokenBlackListdRoutes
-//      }
-//    })
-
  // Abaixo é o codigo antes de ir para produção
-/*  JwtModule.forRoot({
+ JwtModule.forRoot({
   config: {
     tokenGetter: tokenGetter,
     allowedDomains: ['localhost:8080'],
     disallowedRoutes: ['http://localhost:8080/oauth/token']
   }
-}) */
+})
 
     // Abaixo é o codigo antes de ir para produção
-    JwtModule.forRoot({
+/*     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: environment.tokenWhitelistedDomains,
         disallowedRoutes: environment.tokenBlackListdRoutes
       }
-    })
+    }) */
 
   ],
   exports: [

@@ -68,6 +68,7 @@ export class Usuario {
     nome: string;
     email: string;
     senha: string;
+    permissoes: any[];
 }
 
 export class UsuarioPermissoes {
@@ -75,4 +76,9 @@ export class UsuarioPermissoes {
     codigo_usuario: number;
     codigo: number;
     codigo_permissao: number;
+}
+
+export class Permissao {
+    codigo: number;
+    descricao: string;
 }
