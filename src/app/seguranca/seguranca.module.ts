@@ -11,7 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoneyHttpInterceptor } from './money-http-interceptors';
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 
 
@@ -33,22 +33,22 @@ export function tokenGetter(): string {
     InputTextModule,
     ButtonModule,
  // Abaixo é o codigo antes de ir para produção
- JwtModule.forRoot({
+/*  JwtModule.forRoot({
   config: {
     tokenGetter: tokenGetter,
     allowedDomains: ['localhost:8080'],
     disallowedRoutes: ['http://localhost:8080/oauth/token']
   }
-})
+}) */
 
     // Abaixo é o codigo antes de ir para produção
-/*     JwtModule.forRoot({
+    JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: environment.tokenWhitelistedDomains,
         disallowedRoutes: environment.tokenBlackListdRoutes
       }
-    }) */
+    })
 
   ],
   exports: [
