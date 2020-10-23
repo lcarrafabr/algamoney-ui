@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Usuario, UsuarioPermissoes } from '../core/model';
 
 export class UsuarioFiltro {
@@ -115,6 +115,13 @@ export class UsuarioService {
 
   return this.http.post<Usuario>(`${this.usuarioPermissoesURL}/user_permition`, usuarioPermissao)
   .toPromise();
+ }
+
+  excluirUsuarioTodasAsPermissoes(codigo: number): Promise<void> {
+
+  return this.http.delete(`${this.usuarioPermissoesURL}/user_permition/deletar-all-permition/${codigo}`)
+  .toPromise()
+  .then(() => null);
  }
 
 }

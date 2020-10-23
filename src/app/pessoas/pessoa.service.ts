@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cidade, Estado, Pessoa } from '../core/model';
-import { promise } from 'protractor';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 export class PessoaFiltro {
   nome: string;

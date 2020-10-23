@@ -5,6 +5,7 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { UsuarioService } from '../usuario.service';
 import { Usuario, UsuarioPermissoes } from 'src/app/core/model';
 import { NgForm } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-usuario-cadastro-permissao',
@@ -17,24 +18,31 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
 
   list1: any[];
   list2: any[];
+
+  copiaList01: any[];
+  copiaList02: any[];
   
 
   preparaEnvio: any[] = new Array;
   usuarioPermissao = new UsuarioPermissoes
 
   usuarios = [];
+  nomeUsuario: string;
+  
 
   usuarioCarregado= [new Usuario];
 
   codigoUsuario: number;
 
   permissoesUsuarios = [];
+  tituloPanel: string;
 
   constructor(
     private usuarioService: UsuarioService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private confirmation: ConfirmationService
   ) { }
 
   ngOnInit() {
@@ -52,13 +60,27 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
     this.usuarioService.listarRoles().then(role => {
       this.list1 = role;
       //this.removePermissoesDisponiveisdaLista();
+      
     });
   }
 
- prepararNovoContato() {
+ prepararNovoContato(id: number) {
+
+  if(id === 0) {
+    this.tituloPanel = 'Cadastro de permissões'
+  }else {
+    this.tituloPanel = 'Edição de permissões'
+    
+    this.copiaList01 = this.list1;
+    this.copiaList02 = this.list2;
+
+    this.preparaEdicao();
+  }
 
   this.exibindoFormularioPermissao = true;
  }
+
+ 
 
  verificaItem02() {
 
@@ -74,7 +96,7 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
     this.adicionar();
   }
 
-  console.log(this.preparaEnvio);
+  //console.log(this.preparaEnvio);
 }
 
 
@@ -84,6 +106,7 @@ adicionar() {
   .then(() => {
     this.toasty.success('Usuario cadastrado com sucesso!');
 
+    location.reload();
     //form.reset();
     //this.usuario = new Usuario;
   })
@@ -105,13 +128,11 @@ preparaArray(dados: Array<any>, nome: string, email: string) {
 
   const permissoes = dados;
   let descricao: string;
-  let nomeUsuario = nome;
-  let emailUsuario = email;
 
   for(let i = 0, l = permissoes.length; i < l; i ++) {
 
     descricao = permissoes[i].descricao;
-
+    this.nomeUsuario = nome;
     this.permissoesUsuarios.push({descricao, nome, email});
   }
   this.removePermissoesDisponiveisdaLista();
@@ -132,22 +153,53 @@ removePermissoesDisponiveisdaLista() {
 
     if (i < index && i != index) {
       permissao = this.permissoesUsuarios[i].descricao;
-      console.log(index);
     }
     
     if(this.list1[i].descricao != permissao) {
-      //console.log('Achei: ' + this.list1[i].descricao);
-      //copia.splice(i, 1);
+
       copiaList01.push(this.list1[i]);
     
     } else {
       copiaList02.push(this.list1[i]);
     }
-    //index --;
+
   }
   this.list1 = copiaList01;
   this.list2 = copiaList02;
+
 }
+
+bloquePermissoes() {
+
+  this.confirmation.confirm({
+    message: `Deseja remover todas as permissões do usuário ${this.nomeUsuario}?`,
+    accept: () => {
+      this.excluirTodasPermissoes(this.codigoUsuario);
+    }
+  });
+}
+
+excluirTodasPermissoes(codigoUser: number) {
+
+  this.usuarioService.excluirUsuarioTodasAsPermissoes(codigoUser)
+  .then(() => {
+    this.toasty.success('Permissões retiradas com sucesso!');
+    location.reload();
+  })
+}
+
+
+preparaEdicao() {
+  
+  let verificaAlteracao = [];
+
+  for(const list of this.list1) {
+
+    this.list1 === this.copiaList01
+    console.log('Igual')
+  }
+}
+
   
 
 }

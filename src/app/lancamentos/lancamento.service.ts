@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
 import { Lancamento } from '../core/model';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 export class LancamentoFiltro {
 

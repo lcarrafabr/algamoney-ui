@@ -1,8 +1,14 @@
 <div class="container">
     <div class="ui-g">
-        <div class="ui-g-12">
-          <button class="ui-button-secondary" pButton label="Novo" icon="pi pi-plus" type="button"
-          (click)="prepararNovoContato()"></button>
+        <div class="ui-g-10">
+          <button class="ui-button-secondary espaco-botoes" pButton label="Novo" icon="pi pi-plus" type="button"
+          (click)="prepararNovoContato(0)"></button>
+
+          <!--<button class="ui-button-warning espaco-botoes" pButton label="Editar" icon="pi pi-pencil" type="button"
+          (click)="prepararNovoContato(1)"></button>-->
+
+          <button class="ui-button-danger espaco-botoes" pButton label="Bloquear" icon="pi pi-times-circle" type="button"
+          (click)="bloquePermissoes()"></button>
         </div>
         <div class="ui-g-10">
           <p-table [value]="permissoesUsuarios" [responsive]="true">
@@ -11,7 +17,6 @@
                 <th>Usuario</th>
                 <th>E-mail</th>
                 <th>Permissao</th>
-                <th class="col-acoes-header">Ações</th>
               </tr>
             </ng-template>
     
@@ -20,15 +25,6 @@
                 <td>{{ contato.nome }}</td>
                 <td>{{ contato.email }}</td>
                 <td>{{ contato.descricao }}</td>
-                <td class="col-acoes">
-    
-                  <button class="ui-button-raised" pButton icon="pi pi-pencil" type="button" pTooltip="Editar" tooltipPosition="top"
-                  ></button>
-    
-                  <button class="ui-button-raised" pButton icon="pi pi-trash" type="button" pTooltip="Excluir" tooltipPosition="top"
-                  ></button>
-    
-                </td>
               </tr>
             </ng-template>
             
@@ -38,7 +34,7 @@
       </div>
 </div>
 
-<p-dialog header="Cadastro de permissões" [(visible)]="exibindoFormularioPermissao" modal="modal">
+<p-dialog header="{{ tituloPanel }}" [(visible)]="exibindoFormularioPermissao" modal="modal">
     <div>
         <div>
             <div>
@@ -51,6 +47,7 @@
                     </ng-template>
                 </p-pickList>
             </div>
+            <div style="color: white;">------</div>
             <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" (click)="verificaItem02()"></button>
         </div>
     </div>
