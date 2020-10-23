@@ -8,10 +8,11 @@ import { ButtonModule } from 'primeng/button';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MoneyHttpInterceptor } from './money-http-interceptors';
+//import { MoneyHttpInterceptor } from './money-http-interceptors';
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
 import { environment } from '../../environments/environment';
+import { JwtHttpInterceptor } from './money-http-interceptors';
 
 
 
@@ -59,7 +60,7 @@ export function tokenGetter(): string {
   providers: [JwtHelperService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: MoneyHttpInterceptor,
+      useClass: JwtHttpInterceptor,
       multi: true
     },
     AuthGuard,

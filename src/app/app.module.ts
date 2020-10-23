@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RelatoriosModule } from './relatorios/relatorios.module';
-import { MoneyHttpInterceptor } from './seguranca/money-http-interceptors';
+import { JwtHttpInterceptor } from './seguranca/money-http-interceptors';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { MoneyHttpInterceptor } from './seguranca/money-http-interceptors';
     AppRoutingModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: MoneyHttpInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtHttpInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
