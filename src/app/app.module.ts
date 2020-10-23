@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { CoreModule } from './core/core.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RelatoriosModule } from './relatorios/relatorios.module';
+import { MoneyHttpInterceptor } from './seguranca/money-http-interceptors';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { RelatoriosModule } from './relatorios/relatorios.module';
     CoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: MoneyHttpInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

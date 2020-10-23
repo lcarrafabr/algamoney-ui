@@ -25,6 +25,8 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
                     }
                     req = req.clone({
                         setHeaders: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
                             Authorization: `Bearer ${localStorage.getItem('token')}`
                         }
                     });

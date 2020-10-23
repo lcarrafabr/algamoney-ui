@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MoneyHttpInterceptor } from './money-http-interceptors';
 import { AuthGuard } from './auth.guard';
 import { LogoutService } from './logout.service';
@@ -28,6 +28,8 @@ export function tokenGetter(): string {
     CommonModule,
     SegurancaRoutingModule,
     FormsModule,
+
+    HttpClientModule,
     
     CardModule,
     InputTextModule,
@@ -44,9 +46,9 @@ export function tokenGetter(): string {
     // Abaixo é o codigo antes de ir para produção
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: environment.tokenWhitelistedDomains,
-        disallowedRoutes: environment.tokenBlackListdRoutes
+        tokenGetter: tokenGetter
+        //allowedDomains: environment.tokenWhitelistedDomains,
+        //disallowedRoutes: environment.tokenBlackListdRoutes
       }
     })
 
