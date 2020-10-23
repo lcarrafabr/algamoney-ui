@@ -8,8 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LogoutService {
 
-  tokensRevokeUrl: 'http://localhost:8080/tokens/revoke';
-
   constructor(
     private http: HttpClient,
     private auth: AuthService,
