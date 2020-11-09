@@ -27,6 +27,9 @@
     *ngIf="auth.temPermissao('ROLE_PESQUISAR_CATEGORIA')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/categorias">Categorias</a></li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"
+    *ngIf="auth.temPermissao('ROLE_PESQUISAR_CATEGORIA')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/cidades">Cidades</a></li>
+
+    <li class="navbar-menuitem" routerLinkActive="ativo"
     *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')" (click)="exibindoMenu = !exibindoMenu"><a routerLink="/relatorios/lancamentos">Relatórios</a></li>
 
     <li class="navbar-menuitem" routerLinkActive="ativo"><a href="javascript: ;" (click)="logout()">Logout</a></li>

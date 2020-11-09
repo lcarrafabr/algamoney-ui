@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <h2>Pesquisa de cidades</h2>
+
+            <div>
+                <form autocomplete="off">
+
+                    <div class="ui-g-12 ui-fluid">
+                        <label>Nome cidade</label>
+                        <input pInputText type="text" placeholder="Nome da cidade">
+                    </div>
+                    <div class="ui-g-12">
+                        <button icon="pi pi-search" iconPos="left" class="ui-button-rounded ui-button-raised" pButton type="submit" label="Pesquisar"></button>
+                      </div>
+                </form>
+            </div>
+
+            <div class="ui-g-12">
+                <p-table [value]="cidades"
+                [responsive]="true"
+                [paginator]="true"
+                [rows]="filtro.itensPorPagina">
+                <ng-template pTemplate="emptymessage">
+                    Nenhum lançamento encontrado
+                  </ng-template>
+                  <ng-template pTemplate="header">
+                    <tr>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th class="col-data-header">Ações</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-cidade>
+                    <tr>
+                        <td>{{ cidade.nome }}</td>
+                        <td>{{ cidade.estado.nome}}</td>
+                        <td>
+                            <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" 
+                            pTooltip="Editar registro"></a>
+
+                            <a class="ui-button-raised" pButton icon="pi pi-trash" style="margin-right: 5px;" pTooltip="Excluir registro"
+                            (click)="confirmarExclusaousuario(usuario)"></a>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                </p-table>
+            </div>
+
+            <div class="ui-g-12">
+                <a icon="pi pi-plus-circle" iconPos="left" class="ui-button-raised" pButton label="Nova cidade" routerLink="/usuarios/cadastro"></a>
+              </div>
+
+        </div>
+    </div>
+</div>

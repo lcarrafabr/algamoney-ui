@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: 'relatorios', loadChildren: 'src/app/relatorios/relatorios.module#RelatoriosModule' },
     { path: 'usuarios', loadChildren: 'src/app/usuarios/usuarios.module#UsuariosModule' },
     { path: 'categorias', loadChildren: 'src/app/Categorias/categoria.module#CategoriaModule' },
+    { path: 'cidades', loadChildren: 'src/app/cidades/cidades.module#CidadesModule' },
   
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
