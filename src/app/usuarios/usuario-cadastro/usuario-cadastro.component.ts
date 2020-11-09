@@ -27,10 +27,12 @@ export class UsuarioCadastroComponent implements OnInit {
 
   ngOnInit() {
 
-    this.codigoUsuario = this.route.snapshot.params['codigo']
+    const codigoUsuario = this.route.snapshot.params['codigo']
 
-    if (this.codigoUsuario) {
-      this.carregarUsuario(this.codigoUsuario);
+    //console.log(codigoUsuario)
+
+    if (codigoUsuario != undefined && codigoUsuario != null && codigoUsuario != NaN && codigoUsuario) {
+      this.carregarUsuario(codigoUsuario);
     }
   }
 

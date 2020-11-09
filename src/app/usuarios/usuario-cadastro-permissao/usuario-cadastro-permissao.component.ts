@@ -52,7 +52,9 @@ export class UsuarioCadastroPermissaoComponent implements OnInit {
 
     this.codigoUsuario = parseInt(this.route.snapshot.params['codigo']); 
 
-    this.carregarUsuario(this.codigoUsuario);
+    if(this.codigoUsuario) {
+      this.carregarUsuario(this.codigoUsuario);
+    }
     
   }
 
