@@ -32,7 +32,7 @@ export class UsuarioPesquisaComponent implements OnInit {
   listarTudo() {
     this.usuarioService.listarTodosusuarios()
     .then(result => {
-      console.log(result);
+      //console.log(result);
       this.usuarios = result
     });
   }

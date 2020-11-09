@@ -16,10 +16,13 @@ import { SegurancaModule } from './seguranca/seguranca.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RelatoriosModule } from './relatorios/relatorios.module';
 import { JwtHttpInterceptor } from './seguranca/money-http-interceptors';
+import { CadastroCategoriaComponent } from './Categorias/cadastro-categoria/cadastro-categoria.component';
+import { CategoriaModule } from './Categorias/categoria.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //CadastroCategoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { JwtHttpInterceptor } from './seguranca/money-http-interceptors';
     SegurancaModule,
     DashboardModule,
     RelatoriosModule,
+    CategoriaModule,
     
     CoreModule,
     AppRoutingModule

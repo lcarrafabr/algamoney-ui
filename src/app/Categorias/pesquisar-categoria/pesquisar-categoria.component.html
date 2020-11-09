@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <h2>Pesquisa de categorias</h2>
+
+            <div>
+                <form autocomplete="off">
+
+                    <div class="ui-g-12 ui-fluid">
+                        <label>Categoria</label>
+                        <input pInputText type="text" placeholder="Pesquisar categoria" name="nome" >
+                    </div>
+
+                    <div class="ui-g-12">
+                        <button pButton icon="pi pi-search" iconPos="left" class="ui-button-rounded ui-button-raised" type="submit" label="Pesquisar"></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="ui-g-12">
+                <div class="ui-g-12">
+                    <p-table [value]="categorias"
+                    [responsive]="true"
+                    [paginator]="true"
+                    [rows]="filtro.itensPorPagina"
+                    #tabela>
+                    <ng-template pTemplate="emptymessage">
+                        Nenhum lançamento encontrado
+                      </ng-template>
+                      <ng-template pTemplate="header">
+                        <tr>
+                            <th>Categoria</th>
+                            <th class="col-data-header">Ações</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-categoria>
+                        <tr>
+                            <td>{{ categoria.nome }}</td>
+                            <td>
+                                <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" 
+                                [routerLink]="['/categorias', categoria.codigo]" pTooltip="Editar registro"></a>
+
+                                <a class="ui-button-raised" pButton icon="pi pi-trash" style="margin-right: 5px;" pTooltip="Excluir registro"
+                                (click)="confirmaExclusaoCategoria(categoria.codigo)"></a>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    </p-table>
+                </div>
+                <div class="ui-g-12">
+                    <a icon="pi pi-user-plus" iconPos="left" class="ui-button-raised" pButton label="Nova categoria" routerLink="/categorias/cadastro"></a>
+                  </div>
+            </div>
+
+        </div>
+    </div>
+</div>

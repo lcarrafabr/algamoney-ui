@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} categoria</h2>
+
+            <form autocomplete="off" #f="ngForm" (ngSubmit)="adicionar(f)">
+
+                <div class="ui-g-12 ui-fluid">
+                    <label>Nome da categoria</label>
+                    <input pInputText type="text" autocomplete="disabled" name="nomecategoria" [(ngModel)]="categoria.nome"
+                    placeholder="Nome categoria" required>
+                </div>
+
+                <div class="ui-g-12">
+                    <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" ></button>
+                    <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" 
+                     class="ui-button-secondary ui-button-raised"></button>
+                    <a routerLink="/categorias">Voltar para a pesquisa de usuários</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

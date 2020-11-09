@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Categoria } from '../core/model';
+
+export class categoriasFiltro {
+  nome: string;
+  pagina = 0;
+  itensPorPagina = 5;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +31,42 @@ export class CategoriaService {
       return response;
     });
   }
+
+  adicionar(categoria: Categoria) {
+
+    return this.http.post<Categoria>(this.categoriasUrl, categoria).toPromise();
+  }
+
+  buscaPorId(codigo: number): Promise<Categoria> {
+
+    return this.http.get(`${this.categoriasUrl}/${codigo}`)
+    .toPromise()
+    .then(response => {
+      const categoria = response as Categoria
+
+      return categoria;
+    });
+  }
+
+  excluirCategoria(codigo: number): Promise<void> {
+
+    return this.http.delete(`${this.categoriasUrl}/${codigo}`)
+    .toPromise()
+    .then(() => null);
+  }
+
+  atualizarCategoria(categoria: Categoria): Promise<Categoria> {
+
+    return this.http.put(`${this.categoriasUrl}/${categoria.codigo}`, categoria)
+    .toPromise()
+    .then(response => {
+      const categoriaAlterada = response as Categoria
+
+      return categoriaAlterada;
+    });
+  }
+
+
   
 
 }

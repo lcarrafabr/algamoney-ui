@@ -37,7 +37,8 @@ export class Contato {
 }
 
 export class Categoria {
-
+    codigo: number;
+    nome: string;
 }
 
 export class Endereco {
