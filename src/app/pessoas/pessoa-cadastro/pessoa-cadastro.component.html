@@ -55,16 +55,32 @@
         <!--<app-message [control]="cidade" error="required" text="Informe uma cidade."></app-message>-->
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
+      <div class="ui-g-5 ui-md-5 ui-fluid">
         <label>Cidade</label>
         <p-dropdown placeholder="Selecione..."  [filter]="true"
         [options]="cidades" 
-        [(ngModel)]="pessoa.endereco.cidade.codigo" name="cidade" #cidade="ngModel" required [disabled]="!estadoSelecionado"></p-dropdown>
+        [(ngModel)]="pessoa.endereco.cidade.codigo" name="cidade" #cidade="ngModel" required [disabled]="!estadoSelecionado" ></p-dropdown>
+
+      
+         
+     
 
         <app-message [control]="cidade" error="required" text="Informe a cidade."></app-message>
 
         <!--<input pInputText type="text" autocomplete="disabled" name="estado" #estado="ngModel" [(ngModel)]="pessoa.endereco.estado" required>-->
         <!--<app-message [control]="estado" error="required" text="Informe um estado"></app-message>-->
+      </div>
+      
+      <div class="ui-g-1" >
+        <label style="color: white;">___________</label>
+        <button icon="pi pi-plus-circle" iconPos="left" pButton type="button" class="ui-button-raised"
+        (click)="cadastrarCidades()"></button>
+
+        <label style="color: white;">-</label>
+
+        <button icon="pi pi-refresh" iconPos="left" pButton type="button"  class="ui-button-raised"
+        (click)="atualizarCidades()"></button>
+
       </div>
 
       <div class="ui-g-12">

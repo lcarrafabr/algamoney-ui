@@ -131,4 +131,13 @@ export class PessoaCadastroComponent implements OnInit {
     .catch(erro => this.errorHandler.handle(erro));
   }
 
+  cadastrarCidades() {
+
+    alert('Cadastro não disponível');
+  }
+
+  atualizarCidades() {
+    alert('Atualização não disponível');
+  }
+
 }
