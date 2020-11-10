@@ -36,4 +36,25 @@ export class CidadePesquisaComponent implements OnInit {
     });
   }
 
+  confirmarExclusaoCidade(cidade: any) {
+
+    this.confirmation.confirm({
+      message: 'Deseja remover a cidade?',
+      accept: () => {
+        this.removerCidade(cidade);
+      }
+    })
+  }
+
+  removerCidade(cidade: any) {
+
+    this.cidadesService.removerCidade(cidade.codigo)
+    .then(() => {
+      this.grid.reset();
+
+      this.toasty.success('Cidade removida com sucesso!');
+    })
+    .catch(erro => this.errorHander.handle(erro));
+  }
+
 }

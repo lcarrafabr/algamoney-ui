@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} cidade</h2>
+
+            <form autocomplete="off" #f="ngForm" (ngSubmit)="salvar(f)">
+
+                <div class="ui-g-6 ui-fluid">
+                    <label>Nome da cidade</label>
+                    <input type="text" pInputText placeholder="Nome da cidade" name="nome" #nome="ngModel" [(ngModel)]="cidade.nome" required>
+                </div>
+
+                <div class="ui-g-6 ui-fluid">
+                    <label>Estado</label>
+                    <p-dropdown placeholder="Selecione..."  [filter]="true" [options]="estados" name="estadoSelecionado" 
+                    #estado="ngModel" [(ngModel)]="cidade.estado.codigo" required></p-dropdown>
+                </div>
+
+                <div class="ui-g-12">
+                    <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid"></button>
+                    <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" (click)="novo(f)"
+                     class="ui-button-secondary ui-button-raised"></button>
+                    
+                     <a routerLink="/cidades" *ngIf="cadastro">Voltar para a pesquisa de usuários</a>
+     
+                </div>
+
+            </form>
+        </div>
+
+        <div style="color: white;">
+            <p>|</p>
+            <p>|</p>
+            <p>|</p>
+            <p>|</p>
+            <p>|</p>
+            <p>|</p>
+            <p>|</p>
+        </div>
+
+    </div>
+</div>

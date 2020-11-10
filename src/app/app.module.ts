@@ -18,6 +18,7 @@ import { RelatoriosModule } from './relatorios/relatorios.module';
 import { JwtHttpInterceptor } from './seguranca/money-http-interceptors';
 import { CadastroCategoriaComponent } from './Categorias/cadastro-categoria/cadastro-categoria.component';
 import { CategoriaModule } from './Categorias/categoria.module';
+import { CidadesModule } from './cidades/cidades.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CategoriaModule } from './Categorias/categoria.module';
     DashboardModule,
     RelatoriosModule,
     CategoriaModule,
+    CidadesModule,
     
     CoreModule,
     AppRoutingModule

@@ -18,6 +18,8 @@ export class PessoaCadastroComponent implements OnInit {
   estados: any[];
   cidades: any[];
   estadoSelecionado: number;
+
+  exibindoFormularioCidade = false;
   
   constructor(private pessoaService: PessoaService,
     private toasty: ToastyService,
@@ -95,7 +97,10 @@ export class PessoaCadastroComponent implements OnInit {
 
       this.atualizarTituloEdicao()
     })
-    .catch(erro => this.errorHandler.handle(erro));
+    .catch(erro => {
+      console.log(this.cidades)
+      this.errorHandler.handle(erro)
+    });
   }
 
   novo(form: NgForm) {
@@ -133,11 +138,11 @@ export class PessoaCadastroComponent implements OnInit {
 
   cadastrarCidades() {
 
-    alert('Cadastro não disponível');
+    this.exibindoFormularioCidade = true;
   }
 
   atualizarCidades() {
-    alert('Atualização não disponível');
+    this.pesquisarCidades();
   }
 
 }

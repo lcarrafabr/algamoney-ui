@@ -10,10 +10,12 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
+import { CidadeCadastroComponent } from './cidade-cadastro/cidade-cadastro.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
-  declarations: [CidadePesquisaComponent],
+  declarations: [CidadePesquisaComponent, CidadeCadastroComponent],
   imports: [
     CommonModule,
     CidadesRoutingModule,
@@ -24,7 +26,11 @@ import { CardModule } from 'primeng/card';
     ButtonModule,
     TableModule,
     DialogModule,
-    CardModule
+    CardModule,
+    DropdownModule
+  ],
+  exports: [
+    CidadeCadastroComponent
   ]
 })
 export class CidadesModule { }

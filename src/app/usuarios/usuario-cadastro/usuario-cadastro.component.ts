@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Usuario } from 'src/app/core/model';
@@ -22,6 +22,7 @@ export class UsuarioCadastroComponent implements OnInit {
     private usuarioService: UsuarioService,
     private errorHandler: ErrorHandlerService,
     private toasty: ToastyService,
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
@@ -89,6 +90,17 @@ export class UsuarioCadastroComponent implements OnInit {
     
     })
     .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  novo(form: NgForm) {
+
+    form.reset();
+
+    setTimeout(function() {
+      this.usuario = new Usuario();
+    }.bind(this), 1);
+
+    this.router.navigate(['/usuarios/cadastro']);
   }
 
   

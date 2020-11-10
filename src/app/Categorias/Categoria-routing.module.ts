@@ -10,13 +10,13 @@ const routes: Routes = [
       path: 'categorias', 
       component: PesquisarCategoriaComponent,
       canActivate: [AuthGuard],
-      data: {roles: ['ROLE_PESQUISAR_CATEGORIA']}
+      data: {roles: ['ROLE_CADASTRAR_PESSOA']}
     },
     { 
         path: 'categorias/:codigo', 
         component: CadastroCategoriaComponent,
         canActivate: [AuthGuard],
-        data: {roles: ['ROLE_PESQUISAR_CATEGORIA']}
+        data: {roles: ['ROLE_CADASTRAR_PESSOA']}
       }
   ]
 

@@ -20,7 +20,8 @@
                 <p-table [value]="cidades"
                 [responsive]="true"
                 [paginator]="true"
-                [rows]="filtro.itensPorPagina">
+                [rows]="filtro.itensPorPagina"
+                #tabela>
                 <ng-template pTemplate="emptymessage">
                     Nenhum lançamento encontrado
                   </ng-template>
@@ -38,10 +39,10 @@
                         <td>{{ cidade.estado.nome}}</td>
                         <td>
                             <a class="ui-button-raised" pButton icon="pi pi-pencil" style="margin-right: 5px;" 
-                            pTooltip="Editar registro"></a>
+                            [routerLink]="['/cidades/cadastro/editar', cidade.codigo]" pTooltip="Editar registro"></a>
 
                             <a class="ui-button-raised" pButton icon="pi pi-trash" style="margin-right: 5px;" pTooltip="Excluir registro"
-                            (click)="confirmarExclusaousuario(usuario)"></a>
+                            (click)="confirmarExclusaoCidade(cidade)"></a>
                         </td>
                     </tr>
                 </ng-template>
@@ -50,7 +51,7 @@
             </div>
 
             <div class="ui-g-12">
-                <a icon="pi pi-plus-circle" iconPos="left" class="ui-button-raised" pButton label="Nova cidade" routerLink="/usuarios/cadastro"></a>
+                <a icon="pi pi-plus-circle" iconPos="left" class="ui-button-raised" pButton label="Nova cidade" routerLink="/cidades/cadastro"></a>
               </div>
 
         </div>
