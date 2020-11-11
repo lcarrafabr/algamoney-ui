@@ -45,8 +45,6 @@ lancamentosFiltroPorDia(filtro: DashBoardFiltro): Promise<Array<any>> {
 
   params = params.set('dataMesRef', moment(filtro.dataMesRef).format('YYYY-MM-DD'))
 
-  console.log("params: " + params)
-
   return this.http.get(`${this.lancamentosUrl}/estatistica/filtro-por-dia`, { params })
       .toPromise()
       //.then(response => response as Array<any>);
@@ -56,6 +54,17 @@ lancamentosFiltroPorDia(filtro: DashBoardFiltro): Promise<Array<any>> {
 
         return dados;
       });
+}
+
+lancamentosFiltroPorCategoria(filtro: DashBoardFiltro): Promise<Array<any>> {
+
+  let params = new HttpParams();
+
+  params = params.set('dataMesRef', moment(filtro.dataMesRef).format('YYYY-MM-DD'))
+
+  return this.http.get(`${this.lancamentosUrl}/estatistica/filtro-por-categoria`, { params })
+      .toPromise()
+      .then(response => response as Array<any>);
 }
 
 private converterStringsParaDatas(dados: Array<any>) {

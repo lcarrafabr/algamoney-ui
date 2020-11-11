@@ -45,10 +45,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
+
+    this.dataSelecionada = new Date();
   }
 
   configurarGraficoPizza() {
-    this.dashboardService.lancamentosPorCategoria()
+    //this.dashboardService.lancamentosPorCategoria()
+
+    this.dashboardService.lancamentosFiltroPorCategoria(this.filtro)
     .then(dados => {
 
       this.pieChartData = {
@@ -67,7 +71,8 @@ export class DashboardComponent implements OnInit {
 
   configurarGraficoLinha() {
 
-    this.filtro.dataMesRef = new Date(2020, 11 -1, 11);
+    //this.filtro.dataMesRef = new Date(2020, 11 -1, 11);
+    this.filtro.dataMesRef = this.dataSelecionada;
 
     this.dashboardService.lancamentosFiltroPorDia(this.filtro)
     .then(dados => {
@@ -98,7 +103,8 @@ export class DashboardComponent implements OnInit {
 
   private configurarDiasMes() {
 
-    const mesReferencia = new Date();
+    //const mesReferencia = new Date();
+    const mesReferencia = this.dataSelecionada;
 
     mesReferencia.setMonth(mesReferencia.getMonth() + 1);
     mesReferencia.setDate(0);
@@ -136,7 +142,9 @@ export class DashboardComponent implements OnInit {
 
   filtrar() {
 
-    console.log(this.dataSelecionada)
+    //console.log(this.dataSelecionada)
+    this.configurarGraficoLinha()
+    this.configurarGraficoPizza()
   }
   
 
