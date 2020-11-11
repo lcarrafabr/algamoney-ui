@@ -52,15 +52,38 @@
         formControlName="valor">
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="categoria">
+      <div class="ui-g-06 ui-md-5 ui-fluid" formGroupName="categoria">
         <label>Categoria</label>
         <p-dropdown name="categoria" [options]="categorias" placeholder="Selecione" [filter]=true formControlName="codigo"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="pessoa">
+      <div class="ui-g-1" >
+        <label style="color: white;">___________</label>
+        <button icon="pi pi-plus-circle" iconPos="left" pButton type="button" class="ui-button-raised"
+        (click)="cadastrarCategoria()"></button>
+
+        <label style="color: white;">-</label>
+
+        <button icon="pi pi-refresh" iconPos="left" pButton type="button"  class="ui-button-raised"
+        (click)="atualizarCategorias()"></button>
+      </div>
+      
+
+      <div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="pessoa">
         <label>Pessoa</label>
         <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione" [filter]=true  itemSize="50"
         formControlName="codigo"></p-dropdown>
+      </div>
+
+      <div class="ui-g-1" >
+        <label style="color: white;">___________</label>
+        <button icon="pi pi-plus-circle" iconPos="left" pButton type="button" class="ui-button-raised"
+        (click)="cadastrarPessoa()"></button>
+
+        <label style="color: white;">-</label>
+
+        <button icon="pi pi-refresh" iconPos="left" pButton type="button"  class="ui-button-raised"
+        (click)="atualizarComboPessoa()"></button>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -104,3 +127,16 @@
 
   </form>
 </div>
+
+
+<p-dialog [(visible)]="exibindoFormularioCategoria" modal="modal" header="Cadastro de categorias">
+  
+  <app-cadastro-categoria [cadastro]="false"></app-cadastro-categoria>
+
+</p-dialog>
+
+<p-dialog [(visible)]="exibindoFormularioPessoa" modal="modal" header="Cadastro de Pessoas">
+  
+  <app-pessoa-cadastro [cadastro]="false"></app-pessoa-cadastro>
+
+</p-dialog>

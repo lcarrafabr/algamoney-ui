@@ -20,6 +20,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
+import { CategoriaModule } from '../Categorias/categoria.module';
+import { PessoasModule } from '../pessoas/pessoas.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,10 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     InputMaskModule,
     FileUploadModule,
     ProgressSpinnerModule,
+    DialogModule,
+
+    CategoriaModule,
+    PessoasModule,
 
     LancamentosRoutingModule
   ],

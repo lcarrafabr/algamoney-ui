@@ -15,7 +15,7 @@
                     <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" ></button>
                     <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" 
                      class="ui-button-secondary ui-button-raised"></button>
-                    <a routerLink="/categorias">Voltar para a pesquisa de usuários</a>
+                    <a routerLink="/categorias" *ngIf="cadastro">Voltar para a pesquisa de usuários</a>
                 </div>
 
             </form>

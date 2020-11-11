@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PessoaService } from '../pessoa.service';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
@@ -12,7 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './pessoa-cadastro.component.html',
   styleUrls: ['./pessoa-cadastro.component.css']
 })
+
 export class PessoaCadastroComponent implements OnInit {
+
+  @Input() cadastro = true;
 
   pessoa = new Pessoa();
   estados: any[];

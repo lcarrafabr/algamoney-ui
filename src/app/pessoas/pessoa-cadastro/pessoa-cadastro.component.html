@@ -95,14 +95,14 @@
         <button icon="pi pi-check" iconPos="left" pButton type="submit" label="Salvar" class="ui-button-raised" [disabled]="f.invalid"></button>
         <button icon="pi pi-file-o" iconPos="left" pButton type="button" label="Novo" 
         (click)="novo(f)" class="ui-button-secondary ui-button-raised"></button>
-        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+        <a routerLink="/pessoas" *ngIf="cadastro">Voltar para a pesquisa</a>
       </div>
 
     </div>
   </form>
 </div>
 
-<p-dialog [(visible)]="exibindoFormularioCidade" modal="modal">
+<p-dialog [(visible)]="exibindoFormularioCidade">
   
   <app-cidade-cadastro [cadastro]="false"></app-cidade-cadastro>
 

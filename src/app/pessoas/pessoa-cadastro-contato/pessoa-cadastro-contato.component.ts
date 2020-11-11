@@ -54,7 +54,6 @@ export class PessoaCadastroContatoComponent implements OnInit {
   }
 
   get editando() {
-    console.log(this.contato.codigo)
     return this.contato && this.contato.codigo;
   }
 

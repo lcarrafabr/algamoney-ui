@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,8 @@ import { CategoriaService } from '../categoria.service';
   styleUrls: ['./cadastro-categoria.component.css']
 })
 export class CadastroCategoriaComponent implements OnInit {
+
+  @Input() cadastro = true;
 
   categoria = new Categoria;
   codigoCategoria: number;

@@ -32,6 +32,9 @@ export class LancamentoCadastroComponent implements OnInit {
   dataVencimento: Date;
   dataPagamento: Date;
 
+  exibindoFormularioCategoria = false;
+  exibindoFormularioPessoa = false;
+
   constructor(private categoriaService: CategoriaService,
       private pessoaService: PessoaService,
       private lancamentoService: LancamentoService,
@@ -251,6 +254,26 @@ export class LancamentoCadastroComponent implements OnInit {
       anexo: null,
       urlAnexo: null
     });
+  }
+
+  cadastrarCategoria() {
+
+    this.exibindoFormularioCategoria = true;
+  }
+
+  atualizarCategorias() {
+
+    this.carregarCategorias();
+  }
+
+  cadastrarPessoa() {
+
+    this.exibindoFormularioPessoa = true;
+  }
+
+  atualizarComboPessoa() {
+
+    this.listarPessoas();
   }
 
 }
