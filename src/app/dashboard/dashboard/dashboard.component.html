@@ -5,6 +5,13 @@
             <h1>Dashboard</h1>
         </div>
 
+        <div class="ui-g-12">
+            <label>Filtro</label>
+            <p-calendar view="month" dateFormat="mm/yy" [readonlyInput]="true" [(ngModel)]="dataSelecionada"></p-calendar>
+            <label style="color: white;">-</label>
+            <p-button label="Filtrar" icon="pi pi-filter" (click)="filtrar()"></p-button>
+        </div>
+
         <div class="ui-g-12 ui-md-6">
             <p-panel header="Lancamentos por categoria">
                 <p-chart type="pie" [data]="pieChartData" [options]="options" [responsive]="true"></p-chart>

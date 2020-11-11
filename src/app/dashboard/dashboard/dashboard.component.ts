@@ -1,7 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { DashboardService } from '../dashboard.service';
+import { DashBoardFiltro, DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +9,9 @@ import { DashboardService } from '../dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  filtro = new DashBoardFiltro;
+  dataSelecionada: Date;
 
   pieChartData: any;
   lineChartData: any;
@@ -64,7 +67,9 @@ export class DashboardComponent implements OnInit {
 
   configurarGraficoLinha() {
 
-    this.dashboardService.lancamentosPorDia()
+    this.filtro.dataMesRef = new Date(2020, 11 -1, 11);
+
+    this.dashboardService.lancamentosFiltroPorDia(this.filtro)
     .then(dados => {
 
       const diasDoMes = this.configurarDiasMes();
@@ -128,5 +133,11 @@ export class DashboardComponent implements OnInit {
     }
     return totais;
   }
+
+  filtrar() {
+
+    console.log(this.dataSelecionada)
+  }
+  
 
 }

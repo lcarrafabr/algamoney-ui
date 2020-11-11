@@ -7,15 +7,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {PanelModule} from 'primeng/panel';
 import {ChartModule} from 'primeng/chart';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    SharedModule,
 
     PanelModule,
     ChartModule,
+    CalendarModule,
+    ButtonModule,
 
     SharedModule,
     DashboardRoutingModule
