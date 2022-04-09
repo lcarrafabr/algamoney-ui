@@ -23,7 +23,7 @@
     "@angular/router": "~8.2.14",
     "@auth0/angular-jwt": "^5.0.1",
     "chart.js": "^2.9.3",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "ng2-toasty": "^4.0.3",
     "ngx-currency": "^2.3.3",
     "primeicons": "^2.0.0",
